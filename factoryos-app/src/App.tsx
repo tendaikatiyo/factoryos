@@ -139,6 +139,7 @@ export default function App() {
   const [modal, setModal] = useState<Modal>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [search, setSearch] = useState('')
+  const [detailId, setDetailId] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const customerName = (id: string) => data.customers.find((c) => c.id === id)?.name ?? 'Unknown customer'
@@ -408,7 +409,7 @@ export default function App() {
                     {data.worksOrders.length ? data.worksOrders.map((work) => {
                       const produced = workProduced(work.id)
                       return (
-                        <div key={work.id} className="grid grid-cols-[1.1fr_auto] items-center gap-4 border-b px-5 py-3.5 last:border-b-0 md:grid-cols-[1.1fr_1.3fr_1.1fr_auto]">
+                        <div key={work.id} role="button" tabIndex={0} onClick={() => setDetailId(work.id)} onKeyDown={(e) => e.key === 'Enter' && setDetailId(work.id)} className="grid cursor-pointer grid-cols-[1.1fr_auto] items-center gap-4 border-b px-5 py-3.5 transition-colors last:border-b-0 hover:bg-canvas-soft md:grid-cols-[1.1fr_1.3fr_1.1fr_auto]">
                           <div className="flex items-center gap-2.5">
                             <span className="grid size-9 place-items-center rounded-[9px] bg-secondary"><ClipboardList size={17} /></span>
                             <div className="min-w-0">
@@ -531,7 +532,7 @@ export default function App() {
                     {data.worksOrders.map((work) => {
                       const produced = workProduced(work.id)
                       return (
-                        <TableRow key={work.id}>
+                        <TableRow key={work.id} onClick={() => setDetailId(work.id)} className="cursor-pointer">
                           <TableCell><strong className="block text-[11px]">{work.number}</strong><small className="text-[9px] text-muted-foreground">{orderForWork(work)?.number}</small></TableCell>
                           <TableCell><strong className="block text-[11px]">{customerName(work.customerId)}</strong><small className="text-[9px] text-muted-foreground">{work.productDescription}</small></TableCell>
                           <TableCell><div className="flex flex-wrap gap-1">{work.route.map((r) => <Badge key={r} variant="neutral">{r}</Badge>)}</div></TableCell>
@@ -563,9 +564,9 @@ export default function App() {
                   </TableHeader>
                   <TableBody>
                     {data.productionRuns.map((run) => (
-                      <TableRow key={run.id}>
+                      <TableRow key={run.id} onClick={() => setDetailId(run.worksOrderId)} className="cursor-pointer">
                         <TableCell><strong className="block text-[11px]">{formatDate(run.date)}</strong><small className="text-[9px] text-muted-foreground">{run.shift} shift</small></TableCell>
-                        <TableCell><strong className="text-[11px]">{data.worksOrders.find((w) => w.id === run.worksOrderId)?.number}</strong></TableCell>
+                        <TableCell><strong className="text-[11px] underline decoration-dotted underline-offset-2">{data.worksOrders.find((w) => w.id === run.worksOrderId)?.number}</strong></TableCell>
                         <TableCell><strong className="block text-[11px]">{run.stage}</strong><small className="text-[9px] text-muted-foreground">{machineNumber(run.machineId)} · {run.rollCount} rolls</small></TableCell>
                         <TableCell className="text-[11px]">{run.operator}</TableCell>
                         <TableCell><strong className="block text-[11px]">{num(run.producedKg)} kg</strong><small className="text-[9px] text-muted-foreground">{run.producedUnits ? `${num(run.producedUnits)} units` : ''}</small></TableCell>
@@ -682,6 +683,104 @@ export default function App() {
               <DespatchForm works={data.worksOrders} available={(id) => Math.max(0, workTransferred(id) - workDespatched(id))} onSubmit={createDespatch} />
             </FormFrame>
           )}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={detailId !== null} onOpenChange={(open) => !open && setDetailId(null)}>
+        <DialogContent showCloseButton={false} className="max-h-[calc(100vh-2rem)] gap-0 overflow-y-auto bg-canvas-soft p-0 sm:max-w-3xl">
+          {(() => {
+            const work = data.worksOrders.find((w) => w.id === detailId)
+            if (!work) return null
+            const order = orderForWork(work)
+            const runs = data.productionRuns.filter((r) => r.worksOrderId === work.id)
+            const transfers = data.finishedGoodsTransfers.filter((t) => t.worksOrderId === work.id)
+            const despatches = data.despatches.filter((d) => d.worksOrderId === work.id)
+            const produced = workProduced(work.id)
+            return (
+              <>
+                <DialogHeader className="sticky top-0 z-[2] border-b bg-canvas-soft/95 px-6 py-6 backdrop-blur-md">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-2">
+                      <Eyebrow>{order?.number ?? 'Works order'} · {customerName(work.customerId)}</Eyebrow>
+                      <DialogTitle className="font-display flex items-center gap-3 text-2xl font-normal tracking-[-0.03em]">
+                        {work.number}
+                        <Badge variant={badgeVariant(statusTone(work.status))}>{work.status}</Badge>
+                      </DialogTitle>
+                      <DialogDescription className="text-[11px]">{work.productDescription}</DialogDescription>
+                    </div>
+                    <DialogClose asChild>
+                      <Button variant="outline" size="icon" aria-label="Close dialog"><X size={16} /></Button>
+                    </DialogClose>
+                  </div>
+                </DialogHeader>
+
+                <div className="flex flex-col gap-5 px-6 py-6">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                    <StatCard label="Ordered" value={num(work.quantityKg)} hint="kg on works order" />
+                    <StatCard label="Produced" value={num(produced)} hint={`${num(workPassed(work.id))} kg passed QA`} />
+                    <StatCard label="In Finished Goods" value={num(workTransferred(work.id) - workDespatched(work.id))} hint={`${num(workTransferred(work.id))} kg transferred`} />
+                    <StatCard label="Despatched" value={num(workDespatched(work.id))} hint={`${num(Math.max(0, work.quantityKg - workDespatched(work.id)))} kg outstanding`} />
+                  </div>
+
+                  <div>
+                    <div className="mb-1.5 flex justify-between text-[10px] text-muted-foreground"><span>Production progress</span><span>{num(produced)} / {num(work.quantityKg)} kg</span></div>
+                    <Progress value={(produced / Math.max(1, work.quantityKg)) * 100} />
+                  </div>
+
+                  <Card className="gap-0 py-0">
+                    <CardContent className="grid gap-6 px-5 py-4 sm:grid-cols-2">
+                      <dl className="grid grid-cols-2 gap-y-4">
+                        <Detail label="Machine" value={machineNumber(work.machineId)} />
+                        <Detail label="Expected rate" value={`${num(work.expectedRatePerHour)} kg/h`} />
+                        <Detail label="Issued" value={formatDate(work.createdAt.slice(0, 10))} />
+                        <Detail label="Delivery due" value={order ? formatDate(order.deliveryDate) : '—'} />
+                      </dl>
+                      <div className="flex flex-col gap-2">
+                        <Eyebrow>Route</Eyebrow>
+                        <div className="flex flex-wrap gap-1.5">{work.route.map((r) => <Badge key={r} variant="neutral">{r}</Badge>)}</div>
+                        <Eyebrow>Formulation</Eyebrow>
+                        <p className="text-[11px] text-muted-foreground">{work.formulation}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <section>
+                    <Eyebrow>Production runs ({runs.length})</Eyebrow>
+                    <Card className="mt-2 gap-0 overflow-hidden py-0">
+                      {runs.length ? runs.map((run) => (
+                        <div key={run.id} className="grid grid-cols-[1fr_1fr_auto] items-center gap-3 border-b px-4 py-3 text-[11px] last:border-b-0 sm:grid-cols-[1fr_1fr_1fr_1fr_auto]">
+                          <div><strong className="block">{formatDate(run.date)}</strong><small className="text-[9px] text-muted-foreground">{run.shift} · {run.operator}</small></div>
+                          <div><strong className="block">{run.stage}</strong><small className="text-[9px] text-muted-foreground">{machineNumber(run.machineId)} · {run.rollCount} rolls</small></div>
+                          <div className="hidden sm:block"><strong className="block">{num(run.producedKg)} kg</strong><small className="text-[9px] text-muted-foreground">{run.scrapKg} kg scrap</small></div>
+                          <div className="hidden sm:block"><strong className="block">{run.downtimeMinutes} min</strong><small className="text-[9px] text-muted-foreground">{run.downtimeCode || 'No downtime'}</small></div>
+                          <Badge variant={run.qualityResult === 'Pass' ? 'success' : run.qualityResult === 'Fail' ? 'danger' : 'warning'}>{run.qualityResult}</Badge>
+                        </div>
+                      )) : <p className="px-4 py-4 text-[11px] text-muted-foreground">No production recorded yet.</p>}
+                    </Card>
+                  </section>
+
+                  <section>
+                    <Eyebrow>Finished Goods & despatch</Eyebrow>
+                    <Card className="mt-2 gap-0 overflow-hidden py-0">
+                      {transfers.length === 0 && despatches.length === 0 && <p className="px-4 py-4 text-[11px] text-muted-foreground">Nothing transferred or despatched yet.</p>}
+                      {transfers.map((t) => (
+                        <div key={t.id} className="flex items-center justify-between gap-3 border-b px-4 py-3 text-[11px] last:border-b-0">
+                          <div><strong className="block">FG transfer · {formatDate(t.date)}</strong><small className="text-[9px] text-muted-foreground">{t.transferredBy} → {t.receivedBy}</small></div>
+                          <strong>{num(t.quantityKg)} kg</strong>
+                        </div>
+                      ))}
+                      {despatches.map((d) => (
+                        <div key={d.id} className="flex items-center justify-between gap-3 border-b px-4 py-3 text-[11px] last:border-b-0">
+                          <div><strong className="block">Despatch · {d.deliveryNote}</strong><small className="text-[9px] text-muted-foreground">{formatDate(d.date)} · authorised {d.authorisedBy}</small></div>
+                          <strong>{num(d.quantityKg)} kg</strong>
+                        </div>
+                      ))}
+                    </Card>
+                  </section>
+                </div>
+              </>
+            )
+          })()}
         </DialogContent>
       </Dialog>
 

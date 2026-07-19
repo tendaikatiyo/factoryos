@@ -1,5 +1,6 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 @import '@fontsource-variable/stack-sans-notch';
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -41,7 +42,7 @@
   --font-display: 'Stack Sans Notch Variable', sans-serif;
   --font-heading: 'Geist Variable', sans-serif;
   --font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
-  --font-mono: 'Geist Variable', ui-monospace, monospace;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
