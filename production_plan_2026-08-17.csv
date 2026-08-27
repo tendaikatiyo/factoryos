@@ -1,0 +1,30 @@
+Machine,Customer,WOs,Operator,Priority,Notes
+XE02,Agrifora,"0826/115/116;0826/117/118",W.Danger,,Combined two WO groups for Agrifora
+XE07,Stock,0826/58,W.Danger,Urgent,Stock item flagged Urgent
+XE07,Authentic Foods,0826/102,W.Danger,,Associated after XE07 in source
+XE04,Crystal Candy,0826/97,E.Sibanda,,
+XE08,Freddy Hirsch,0826/96,E.Sibanda,,
+XE08,Dibcon PBC,0726/204,E.Sibanda,,
+XE05,Connruff,0826/62,A.Jamu,,
+XE05,Garicom,0826/18,A.Jamu,,
+XE09,Stock,0726/238,Pride Nkomo & Malindi.T,,Source shows Stock under XE09
+MLT,Pride Nkomo & Malindi,0726/25,,,
+XE10,MLT,0726/25,Darangwa & Chakanyuka,,Ambiguous mapping in source
+XE14,MLT,0726/25,S.Sithole & Murowanidza,,
+XE15,Schweppes,0626/117,D.Mutsiwa,,
+BM05,Chalkmart,0826/21,H.Tiriboyi,,
+BM06,Bata,0726/130;0726/131,T.Mutigwa,,Two WOs listed for Bata
+BM10,Orange Ville,0826/02,Mupararano & Murwira,,Notes include Boost Hail 0826/43
+BM17,Hardley Sugar,0826/73,T.Mhere,Urgent,
+BM15,Stock,0626/107,Marikanosi,Urgent,
+BM19,Dayfro,0726/01,Kapiyanyika,,
+BM18,Stock, ,C.Katiyo,Very Urgent,WO number missing in source for BM18
+BM26,Everyday Peanut,0826/36,T.Hodobo,,
+BM26,Stock,0826/75,T.Hodobo,,
+SL04,Cairns Foods,0726/139,G.Mashiri,,
+SL04,Schweppes Rewinds,,G.Mashiri,,Entry unclear
+REW01,Stock,0726/156,T.Tomu,,
+REW02,Golden Tasty,,G.Dehwe,,WO missing in source
+PR01,Afribags,0726/215,Mangena & Makora,,Also Freddy Hirsch 0826/96 appears nearby
+PR03,Agrifora,,, ,
+PR04,Grobbie Best Foods,"0826/115/116;0826/117/118;0826/06",Masimbira & Makora;Gora & Bangira,,
