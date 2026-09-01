@@ -16,6 +16,12 @@ The operating spine, taken directly from Rawplast's controlled forms:
 
 `Order Confirmation → approvals → Works Order → production capture → quality gate → Finished Goods transfer → Despatch`
 
+### 1.1 Rawplast site notes
+
+- **Finished Goods (FG) computer — no internet.** Directors have intentionally kept the FG workstation offline; the stated reason is concern that the FG data clerk would be distracted by the internet. Any FactoryOS rollout must account for this (LAN-only or offline-first FG terminal; do not assume cloud-only or always-online access at FG).
+- **Despatch staffing:** 4 despatch staff.
+- **Drivers:** 5 drivers (part of overall staff headcount).
+
 ## 2. What was decided
 
 - Platform choice: build a purpose-built MVP first, not SAP / Odoo / ERPNext. Rationale and the ERP comparison are in `FACTORYOS_DECISION.md`. ERPNext is the recommended future option for finance/procurement if/when ERP is needed.
