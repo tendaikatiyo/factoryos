@@ -27,3 +27,5 @@ this label is used across production stages, not just extrusion
 from extrusion the product moves on to next stage
 if exstrusion is it's only stop it get label and moved finished goods
 if not it moves to next department 
+
+in this wing there is also a rewinder that rewinds big palletwrap rolls into smaller ones

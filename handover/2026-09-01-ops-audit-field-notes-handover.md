@@ -114,6 +114,7 @@ Despatch / FG stores (large room, floor-stacked stock)
 - Compiled daily with **1-day lag** (e.g. items made 31/08 recorded 01/09)
 - Manually re-keyed into Excel on an **offline PC**
 - Planner collects updated workbook via **flash drive every morning**
+- **Why offline:** deliberate management policy — directors want to prevent workers getting distracted by the internet or using it inappropriately. Not a technical limitation; any fix must respect this constraint.
 
 **Customer fulfilment (retail counter):**
 - Large room with dense floor-stacked FG (see photos)
@@ -165,15 +166,17 @@ Despatch / FG stores (large room, floor-stacked stock)
 
 1. **Visibility** — production state, FG stock, and despatch outbound are all offline or delayed. Root cause of phone calls, interruptions, and crisis rushes.
 
-2. **Data lag** — paper book → T+1 compilation → manual Excel → flash drive = planning always at least 24–48 hours behind the floor.
+2. **Data lag** — paper book → T+1 compilation → manual Excel → flash drive = planning always at least 24–48 hours behind the floor. The flash-drive step exists partly because the FG PC is intentionally kept off the internet (director policy on worker distraction/misuse — see despatch notes).
 
-3. **Stock build-up** — high `STOCK` proportion, routine overruns, partial collections, and stranded/old stock all consume floor space and picking time.
+3. **Policy vs productivity trade-off** — keeping the FG PC offline addresses a real management concern but creates the flash-drive bottleneck and blocks live stock visibility. Recommendations should not assume "just connect it to the internet"; options include a LAN-only sync to a server, scheduled automated export to a shared drive, or a dedicated terminal with no browser.
 
-4. **Identification inconsistency** — proper labels vs marker-pen WIP rolls vs handwritten bundle markers in despatch (see photos).
+4. **Stock build-up** — high `STOCK` proportion, routine overruns, partial collections, and stranded/old stock all consume floor space and picking time.
 
-5. **Accountability loop not closed** — "Action to be taken" and "By" columns in the FG spreadsheet are never used.
+5. **Identification inconsistency** — proper labels vs marker-pen WIP rolls vs handwritten bundle markers in despatch (see photos).
 
-6. **Fragmented routing visibility** — each production stage has its own book; only the final exit machine appears on FG transfer. WIP between stages is invisible to planning/despatch.
+6. **Accountability loop not closed** — "Action to be taken" and "By" columns in the FG spreadsheet are never used.
+
+7. **Fragmented routing visibility** — each production stage has its own book; only the final exit machine appears on FG transfer. WIP between stages is invisible to planning/despatch.
 
 ---
 

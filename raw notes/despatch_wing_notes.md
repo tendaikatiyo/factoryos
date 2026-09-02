@@ -3,6 +3,8 @@ there is a finished goods transfer book in which the FG operator records finishe
 the book is compiled daily using stuff from previous day i.e items made on 31/08 will be recorded on 01/09
 FG operator records manually from the FG book and enters into excel sheet, I have attached completed sheet in repo
 FG operator works with Planning team, FG operator's PC does not have internet access, so Planner needs to come with flashdrive to collect updated excel workbook everyday in the morning
+the FG PC is deliberately kept offline — directors are concerned about workers getting distracted by the internet or using it nefariously
+this is a management policy decision, not a technical limitation
 
 in the despatch they also act as the point that transfers stock to the customer
 it's a large room with many finished goods
