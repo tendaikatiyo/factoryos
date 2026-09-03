@@ -25,3 +25,8 @@ some customers order but dont collect for over a month, despatch staff speculate
 each finished good has a label I have attached the finished good label in the repo
 this label is used across production stages, not just extrusion
 
+
+on 3 sept 2026 I liased with the planning chief who said that there used be a local server where they stored in FG excel sheet allowing for FG operator to update figures and stuff be seen by everyone else (sales,planning,ops manager)
+I dont know why this server was disconnected 
+
+after an order is FG OPERATOR despatched then goes to FG excel sheet using issued dnotes and does reconcilliation of finished goods that have left he premises removing the delivered quantities from the fg excel sheet
