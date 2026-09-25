@@ -34,7 +34,7 @@ WIP transfers work with same spine as HQ
 machines at sth have codes but they are not fixed on the machines
 some BMs used to run breadbag jobs for a big bakery in zim (lobels), the bakery is less than a 1km away from the sth factory
 but lobels have since stopped coming and customers like that are few and far btwn
-
+core extruder was purchased used
 
 
 
@@ -59,7 +59,7 @@ he also bemoaned that msasa in particular does not do preventative maintance so 
 he also bemoaned that daily machine cleaning is not done which makes it hard towards inspection time by big clienets concerned about food safety
 he also said that when they acquired the factory they were under the impression that they had also acquired the clients too as all machines had orders on them until the last
 upon taking over    qa gave sales team a list of clients serviced by the previous owners to follow but nothing happend in fact only continued with the factory as business as usual but this sole client eventually stopped coming back because as some good 4000 bags of their lay in stock unattenede for close to a year
-
+CI FLEXO PRINTER IS not running at full speed as machine has some uncleared error codes that need engineering feedback
 
 
 

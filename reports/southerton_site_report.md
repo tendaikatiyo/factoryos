@@ -2,87 +2,126 @@
 
 **Site:** Southerton branch (STH)  
 **Visit date:** Monday 21 September 2026  
-**Report date:** 22 September 2026  
+**Report date:** 23 September 2026  
 **Assessor:** Tendai A.F. Katiyo  
 **Prepared for:** Rawplast Investments Pvt. Ltd. (Directors)  
-**Source notes:** `raw notes/southerton.md`
+**Source notes:** `raw notes/southerton.md`  
+**Programme:** Operations audit — Week 3 site assessment (`ops_audit_plan.md`)
 
 ---
 
-## 1. Executive summary
+## 1. Purpose and context
 
-Southerton is a satellite production site acquired with the City Plastics Industries machinery (2022). It houses a high-quality German central-impression flexo printer and bagmaking capacity, but on the visit day only **two machines were running** (printer + one bagmaker). The site depends on Msasa for extrusion WIP, raw materials, and slitting. A walk-in sales shop is furnished and signed but **missed its 1 September 2026 opening** and remained closed as of 22 September 2026.
+This report records findings from the Southerton production visit on 21 September 2026. It sits inside the wider Rawplast operations audit covering Msasa HQ, Southerton, Harare CBD, and Bulawayo.
 
-The main constraints are not building size or power stability. They are:
+**Audit intent for Southerton (from the plan):** focus on the production facility; capacity and process alignment with HQ; only light attention to the walk-in shop unless conditions warranted more.
 
-1. **Idle capital** — bagmakers and a new core extruder stuck on engineering / procurement / commissioning delays (issues dating from at least November 2025; some engineering job cards reportedly back to 2024).
-2. **Commercial under-activation** — City Plastics customer book was not followed up after acquisition; nearby high-volume customers (e.g. Lobels) have stopped; HQ sales rarely visit the site.
-3. **Wrong job mix on the big printer** — economic sense requires ~1 tonne MOQ (tribal knowledge only); sub-500 kg jobs burn an estimated 50–100 litres of solvent per changeover.
+**What “added context” means here:** Southerton is not a greenfield satellite. It is the former **City Plastics Industries** plant, taken over in **2022** when Rawplast bought the **machinery on site** and kept operations at that address rather than relocating kit to Msasa. The purchase was **machinery only** — not intellectual property, brand, or a formal transfer of the customer book. That history explains much of what the visit showed: strong print hardware, incomplete local routing (no working extrusion / slitting), and a commercial gap between “machines that used to have orders” and “customers Rawplast actually kept.”
 
-If engineering support and suitable print volume are restored, site staff believe Southerton can contribute substantial tonnage. Those capacity claims are **staff estimates**, not measured during this visit.
+Msasa field work (extrusion, printing, bagmaking, FG/despatch, RM stores, planning) is the HQ baseline. Southerton should be read as a **dependent second plant**: same paper spine, different asset mix, and a sharper engineering / commercial bottleneck.
 
 ---
 
-## 2. Site context
+## 2. Executive summary
+
+On visit day only **two machines were operational** — the German central-impression flexo printer and **one** bagmaker — out of a stated fleet of four bagmakers, one CI flexo, one slitter, and four core extruders. The site has **no functioning extruder**, so film WIP comes from Msasa (~12 km / ~30 minutes in traffic). There is **no functioning slitter** on site either; some printed WIP returns to Msasa to finish. There is no dedicated despatch warehouse; the production manager handles customer collection.
+
+A walk-in shop is furnished and signed, was scheduled to open **1 September 2026**, and was still closed on **22 September 2026**.
+
+The binding constraints are not floor space or grid power (STH power is relatively stable). They are:
+
+| Theme | In one line |
+|-------|-------------|
+| **Idle capital** | Multiple bagmakers and a **used** core extruder stuck on eng / procurement / commissioning since at least Nov 2025 |
+| **Commercial under-activation** | City Plastics clients not followed; Lobels (&lt;1 km) gone; HQ sales rarely on site |
+| **Wrong work on the CI press** | ~1 t MOQ is tribal knowledge; sub-500 kg jobs still run; ~50–100 L solvent per changeover (staff) |
+
+Site staff argue Southerton can out-produce perception if engineering and suitable print volume arrive. **Tonnage claims (~200 t/month) are estimates**, not measured on this visit.
+
+---
+
+## 3. Site profile
+
+### 3.1 Acquisition and role
 
 | Item | Detail |
 |------|--------|
-| Origin | 2022 acquisition of City Plastics Industries machinery at the same premises |
-| Scope of acquisition | Machinery only — not intellectual property / brand |
-| Distance to Msasa HQ | ~12 km; ~30 minutes in heavy traffic (Google Maps) |
-| Fleet (stated) | 4 bagmakers, 1 CI flexo printer, 1 slitter, 4 core extruders |
-| Running on visit day | Printer + 1 bagmaker only |
-| Extrusion | No functioning extruder — relies on WIP from Msasa |
-| Slitting | No functioning slitter on site — some printed WIP returns to Msasa |
-| Power | Relatively stable vs typical ZESA loadshedding; generator present but inadequate |
-| Documentation | Same controlled-document types as HQ; WIP transfers follow the same spine |
+| Origin | 2022 — City Plastics Industries closing; Rawplast acquired the machinery and kept the site |
+| What transferred | Machinery only — not IP / brand / guaranteed customers |
+| Intended role today | Satellite print + bagmaking; WIP and RM fed from Msasa; optional walk-in retail |
+| Distance to Msasa | ~12 km; ~30 min heavy traffic (Google Maps) |
 
-### Operating model
+### 3.2 Asset and utilisation snapshot
+
+| Asset class | Stated count | Visit-day status |
+|-------------|--------------|------------------|
+| Bagmakers | 4 | 1 running; 3 down (parts / eng) |
+| CI flexo printer | 1 (German; quality compared to gravure) | Running |
+| Slitter | 1 | Not functioning — slit work loops to Msasa |
+| Core extruders | 4 (incl. one **purchased used**, trialled, not commissioned) | Not in productive service on visit day |
+
+**Machine identity:** codes exist but are **not affixed** to machines — weak for production books, labels, and cross-site asset control.
+
+### 3.3 People on site
+
+| Role | Function |
+|------|----------|
+| QA officer | Site lead; brokers jobs with Msasa production planning |
+| Production manager | Floor ops; also despatch / customer collection |
+| Engineering / workshop | One person — stronger electrical than mechanical |
+| Operators | Production crew |
+| Shop (planned) | One person to be seconded from HQ |
+
+### 3.4 How work flows
 
 ```
 Msasa HQ
-  • Extrusion / WIP
-  • Raw material release
-  • Slitting (for STH jobs that need it)
-  • Production planning
-  • Sales
-        │  pool cars / same paper spine
+  Extrusion → WIP film
+  RM stores → release against STH requisition (pool cars)
+  Slitting (when STH cannot finish)
+  Planning + Sales
+        │  same controlled docs / WIP spine as HQ
         ▼
 Southerton
-  • CI flexo printing
-  • Bagmaking (when machines available)
-  • FG exit / customer collection (prod manager — no dedicated despatch warehouse)
-  • QA officer brokers jobs with Msasa planning
+  CI flexo (large jobs should go here)
+  Bagmaking (when BMs available)
+  FG → customer collects on site (prod manager)
+  Printed WIP needing slit → back to Msasa
         │
         ▼
-Walk-in shop (furnished, signs up — not yet open)
+Walk-in shop — fitted out, not open
 ```
 
-### On-site leadership
+**Power:** Grid relatively stable. Generator present but **cannot run production** — only enough to jog the printer and relieve plate tension. Engineering still owes a fix.
 
-- **QA officer** — overall site lead; liaises with Msasa planning for job allocation  
-- **Production manager** — floor ops; also handles despatch / customer collection  
-- **Engineering / workshop** — one person on site (stronger electrically than mechanically)  
-- **Operators** — production crew  
-- **Shop** — planned to be manned by one person seconded from HQ  
+**Documentation:** Same form types as HQ; WIP transfers use the same spine. Alignment of paperwork is a strength; utilisation of assets is not.
 
 ---
 
-## 3. Top findings
+## 4. Findings
 
-### F1 — High-value assets idle for months (Engineering / Procurement)
+### F1 — High-value assets idle (Engineering / Procurement)
 
-**Observation:** Three bagmakers are down awaiting parts and feedback from engineering and procurement. A new core extruder (higher-quality virgin LDPE capability) was installed, trialled, then left uncommissioned for lack of engineering go-ahead. The BM previously in that position — said by the production manager to outpace Msasa bagmakers on output per hour — was not reassembled after being moved. This situation has been ongoing since **November 2025**. Two further BMs likewise await engineering work.
+**Observation**
 
-**Staff view (QA):** Engineering is failing the site. A list of unattended engineering job cards was shared with directors around **4 September 2026**; some cards reportedly date to **2024**. The assessor was not given copies pending director approval.
+- Three bagmakers await parts and feedback from engineering and procurement.
+- A core extruder capable of higher-quality virgin LDPE film was **bought used**, set up by engineering, trialled, then left **uncommissioned** for lack of engineering go-ahead.
+- The bagmaker that previously occupied that floor position — described by the production manager as faster than Msasa BMs — was **not reassembled** after being moved.
+- This cluster of issues has run since **November 2025**. Two further BMs also await engineering work.
 
-**Impact:** Visit-day utilisation ~2 of ~10 listed assets. Skills transfer and cross-training also suffer because work is inconsistent when machines are down.
+**QA escalation:** A list of unattended engineering job cards was shared with directors around **4 September 2026**; some cards reportedly date to **2024**. Copies were not released to the assessor without director approval.
 
-**Recommendation:**
+**Impact**
 
-1. Director-authorised release of the engineering job-card backlog for Southerton (and HQ for comparison).
-2. Time-bound recovery plan for each idle BM and the uncommissioned core extruder (owner, part status, target date).
-3. Decide explicitly: reassemble the displaced high-output BM, scrap it, or move it — do not leave it in limbo.
+- Visit-day utilisation roughly **2 of ~10** listed assets.
+- Inconsistent work blocks skills transfer and cover when someone is absent.
+- Used capital sits idle after purchase and trial — cash and floor space locked without output.
+
+**Recommendations**
+
+1. Director-authorised release of the Southerton (and comparable HQ) job-card backlog.
+2. Time-bound recovery plan per idle BM and the used core extruder (owner, part status, target date).
+3. Explicit decision on the displaced high-output BM: reassemble, relocate, or scrap — no indefinite limbo.
 
 | Owner (suggested) | Effort | Priority |
 |-------------------|--------|----------|
@@ -90,17 +129,27 @@ Walk-in shop (furnished, signs up — not yet open)
 
 ---
 
-### F2 — Customer book from City Plastics was not commercialised
+### F2 — Customer book after City Plastics was not commercialised
 
-**Observation:** At takeover, machines still had orders. Site staff believed customers came with the acquisition. QA provided sales with a list of former City Plastics clients to follow up; **nothing material happened**. Business continued as usual. The sole continuing client eventually stopped after roughly **4,000 bags** of their product sat unattended for nearly a year. Lobels (bread bags), located **&lt;1 km** from the factory, also stopped; similar nearby volume customers are now rare.
+**Context:** Because the deal was machinery-only, customers did **not** legally transfer. Staff nonetheless expected continuity — machines still had orders at takeover — and treated follow-up as a sales task.
 
-**Impact:** Expensive installed capacity without matching demand; local geographic advantage unused.
+**Observation**
 
-**Recommendation:**
+- QA gave sales a list of former City Plastics clients; **nothing material followed**.
+- Operations continued “business as usual.”
+- The sole continuing client later stopped after about **4,000 bags** of their product sat unattended for nearly a year.
+- Lobels bread-bag work (bakery **&lt;1 km** away) has stopped; similar nearby volume accounts are scarce.
+- HQ sales has visited only a few times and has limited appreciation of the facility.
 
-1. Recover and re-work the City Plastics client list (or confirm it is lost).
-2. Assign a named sales owner for Southerton volume, with a short target list (Lobels-type bakeries, local converters).
-3. Require periodic sales presence on site so commercial staff understand the printer and BM capability.
+**Impact**
+
+Installed print/BM capacity without matching demand; local geography unused; acquisition upside left on the table.
+
+**Recommendations**
+
+1. Recover the City Plastics client list (or confirm it is lost) and assign a named sales owner for Southerton.
+2. Short target list: Lobels-type bakeries and other local volume accounts within a sensible radius.
+3. Require periodic sales presence on site so commercial staff see printer/BM capability and MOQ reality.
 
 | Owner (suggested) | Effort | Priority |
 |-------------------|--------|----------|
@@ -108,17 +157,25 @@ Walk-in shop (furnished, signs up — not yet open)
 
 ---
 
-### F3 — Big printer often runs uneconomic small jobs
+### F3 — CI printer often runs uneconomic small jobs
 
-**Observation:** The CI flexo is high quality (German; output quality compared favourably to gravure). Economic sense is described as needing ~**1 tonne** MOQ. That rule is **tribal knowledge**, not a written policy. Jobs under **500 kg** still run. Prod manager and QA both state changeover / wash-up consumes roughly **50–100 litres of solvent** per job preparation for the next run. HQ sales has visited only a few times and has limited appreciation of the facility. Prod manager wants more suitable print feed from HQ sales. QA is hesitant to pull new work because unreliable uptime risks disappointing customers.
+**Observation**
 
-**Impact:** High solvent cost, setup time, and printer under-recovery; commercial team may not know which jobs belong at Southerton vs Msasa.
+- The press is a major asset (German CI flexo; staff compare finish quality to gravure).
+- Economic sense is described as needing ~**1 tonne** MOQ — **tribal knowledge**, not written policy.
+- Jobs under **500 kg** still run.
+- Prod manager and QA both cite roughly **50–100 litres of solvent** per setup/clean for the next job.
+- Prod manager wants HQ sales to feed the press properly; QA is reluctant to pull new work while uptime is unreliable (fear of disappointing customers).
 
-**Recommendation:**
+**Impact**
 
-1. Write and circulate a Southerton print MOQ / job-routing rule (e.g. ≥1 t to STH CI; smaller jobs to Msasa printers unless exception approved).
-2. Train sales on which products and volumes fit STH.
-3. Track solvent use and changeovers on the CI press for 4–8 weeks to quantify the small-job penalty.
+Solvent and changeover cost, printer under-recovery, and unclear routing between Msasa printers (PR01–PR04) and Southerton CI.
+
+**Recommendations**
+
+1. Write and circulate a Southerton print MOQ / routing rule (e.g. ≥1 t → STH CI; smaller jobs → Msasa unless exception approved).
+2. Brief HQ sales on which volumes and product types belong at STH.
+3. Track solvent use and job sizes on the CI press for 4–8 weeks to put a number on the small-job penalty.
 
 | Owner (suggested) | Effort | Priority |
 |-------------------|--------|----------|
@@ -128,11 +185,11 @@ Walk-in shop (furnished, signs up — not yet open)
 
 ### F4 — Walk-in shop ready but not open
 
-**Observation:** Shop fitted out; signage erected; one HQ person planned for the front office. Target open date **1 September 2026**; still closed **22 September 2026**.
+**Observation:** Fit-out and signage complete; one HQ person planned for the counter. Target open **1 September 2026**; still closed **22 September 2026**.
 
-**Impact:** Missed walk-in revenue; sunk fit-out spend not earning; weak signal of follow-through on site plans.
+**Impact:** Fit-out spend not earning; missed walk-in sales; weak follow-through on a dated commitment.
 
-**Recommendation:** Confirm blockers (staff, stock, approvals, security) and set a new open date with a named owner — or formally defer and stop presenting it as imminent.
+**Recommendation:** Name blockers (staff, stock, approvals, security), then either set a new open date with an owner or formally defer.
 
 | Owner (suggested) | Effort | Priority |
 |-------------------|--------|----------|
@@ -142,15 +199,23 @@ Walk-in shop (furnished, signs up — not yet open)
 
 ### F5 — Satellite dependency and incomplete local route
 
-**Observation:** No functioning extruder; RM issued from Msasa via requisition book and pool cars; no dedicated despatch warehouse (prod manager handles collection); no functioning slitter (some printed WIP returns to Msasa). Machine codes exist but are **not affixed** to machines. Generator cannot run production equipment — only enough to jog the printer and relieve plate tension; engineering still needs to fix it.
+**Observation**
 
-**Impact:** Lead time and logistics tied to Msasa (~30 min); double handling for slit jobs; weak machine identity for books and FG labels; no true power backup for production.
+- No functioning extruder — 100% film WIP dependency on Msasa.
+- RM via requisition book + pool cars from Msasa.
+- No despatch warehouse — prod manager doubles as outbound.
+- No functioning slitter — printed WIP may bounce back to Msasa.
+- Generator cannot support production running.
 
-**Recommendation:**
+**Impact**
 
-1. Affix durable machine codes on every STH asset (align with HQ coding).
-2. Decide whether on-site slitting is worth restoring vs accepting Msasa loop.
-3. Engineering assessment: repair generator to a defined production-support level, or document that STH has no production backup power.
+Lead time and logistics tied to Msasa; double handling; no true production backup power; weaker machine identity (codes not on assets).
+
+**Recommendations**
+
+1. Affix durable machine codes on every STH asset (align with HQ).
+2. Decide: restore on-site slitting vs accept the Msasa loop as policy.
+3. Engineering: repair generator to a defined production-support level, or document that STH has **no** production backup power.
 
 | Owner (suggested) | Effort | Priority |
 |-------------------|--------|----------|
@@ -158,13 +223,13 @@ Walk-in shop (furnished, signs up — not yet open)
 
 ---
 
-### F6 — Cross-site quality / maintenance culture (Msasa) — as reported by STH QA
+### F6 — Msasa maintenance / cleaning culture (reported by STH QA — verify)
 
-**Observation (QA, attributed):** Msasa does little preventive maintenance; breakdowns are mostly firefighting. Daily machine cleaning is weak, which complicates food-safety inspections by large customers.
+**Observation (attributed to QA):** Msasa does little preventive maintenance; many breakdowns are firefighting. Daily machine cleaning is weak, which complicates food-safety inspections by large customers. QA also suggests increasing engineering headcount.
 
-**Impact:** If accurate, this is a company-wide risk, not Southerton-only. Treat as an allegation to verify at HQ with engineering and QA records.
+**Impact:** If accurate, this is a **company-wide** risk that also undermines Southerton (shared eng pool, shared customer audits). Treat as a claim to verify at HQ — not as proven fact from this visit alone.
 
-**Recommendation:** Sample Msasa PM schedules vs actual completion, and cleaning / hygiene checklists ahead of next major customer audit. Compare to STH practice.
+**Recommendation:** Sample Msasa PM schedules vs completion and cleaning/hygiene checklists before the next major customer inspection. Compare with STH practice.
 
 | Owner (suggested) | Effort | Priority |
 |-------------------|--------|----------|
@@ -172,63 +237,64 @@ Walk-in shop (furnished, signs up — not yet open)
 
 ---
 
-## 4. Staff perspectives (attributed)
+## 5. Staff perspectives (attributed)
 
-### Production manager (Southerton)
+### Production manager
 
 - Wants HQ sales to push suitable jobs for the big printer.
-- Engineering / procurement delays keeping three BMs down; commissioning stalled on new core extruder; displaced BM never reassembled (since Nov 2025).
-- Believes Southerton has higher output potential than Msasa **if** engineering delays are cleared.
-- Inconsistent work blocks training and skills transfer for absentee cover.
+- Engineering/procurement delays: 3 BMs down; used core extruder trialled then stalled; displaced BM never reassembled (since Nov 2025).
+- Believes Southerton has higher output potential than Msasa **if** engineering clears the backlog.
+- Inconsistent work blocks training and absentee cover.
 
-### QA officer / site lead (Southerton)
+### QA officer (site lead)
 
-- Sales often lack technical know-how and call him to check capability.
-- Engineering backlog escalated to directors (~4 Sep 2026); some job cards from 2024; declined to share emails without director approval.
+- Sales often lack technical know-how and call him for capability checks.
+- Engineering backlog escalated to directors (~4 Sep 2026); some cards from 2024; emails withheld pending director approval.
 - Hesitant to solicit new work while uptime is unreliable.
-- Capacity claim: with engineering support, Southerton alone could approach **~200 tonnes/month** (combined two-factory baseline also discussed as ~200 t — treat as estimate).
-- Recommends increasing engineering headcount.
+- Capacity estimate: with engineering support, Southerton alone could approach **~200 tonnes/month** (treat as estimate).
 - Critiques Msasa PM and daily cleaning / food-safety readiness.
-- Recounted failed commercial follow-up of City Plastics clients and stranded bag stock (~4,000 bags, ~1 year).
+- Recounted failed City Plastics client follow-up and stranded bag stock (~4,000 bags, ~1 year).
 
 ---
 
-## 5. What is working
+## 6. What is working
 
-- Same documentation types and WIP transfer spine as HQ — process alignment is already in place.
-- High-quality CI flexo asset with strong print capability when fed correctly.
-- Relatively stable grid power compared with many Zimbabwe sites.
+- Same documentation types and WIP transfer spine as HQ — process alignment already exists.
+- High-quality CI flexo when fed correct job sizes.
+- Relatively stable grid power versus many Zimbabwe sites.
 - Clear on-site ownership (QA + prod manager) and a defined link to Msasa planning.
-- Shop physical readiness (fit-out and signage) — only the open decision remains.
+- Shop physically ready — only the open decision remains.
 
 ---
 
-## 6. Recommended actions (priority order)
+## 7. Recommended actions (priority order)
 
 | # | Action | Owner | Timing |
 |---|--------|-------|--------|
-| 1 | Release / review STH engineering job-card backlog; board-visible recovery plan for idle BMs + core extruder | Directors → Eng / Procurement | Immediate |
+| 1 | Release STH eng job-card backlog; recovery plan for idle BMs + used core extruder | Directors → Eng / Procurement | Immediate |
 | 2 | Written print MOQ & routing rule; brief HQ sales | Planning + Sales + STH QA | 1–2 weeks |
-| 3 | Named sales owner for STH; revive City Plastics / local customer list (Lobels-type) | Sales | 2–4 weeks |
-| 4 | Set shop open date or formal deferral | Sales / Ops | 1 week |
-| 5 | Affix machine codes; clarify generator end-state | Engineering | 2–4 weeks |
-| 6 | Verify Msasa PM and cleaning claims against records | Eng + QA (HQ) | Next HQ follow-up |
+| 3 | Named sales owner for STH; revive City Plastics / local list (Lobels-type) | Sales | 2–4 weeks |
+| 4 | Shop: new open date or formal deferral | Sales / Ops | 1 week |
+| 5 | Affix machine codes; decide generator end-state | Engineering | 2–4 weeks |
+| 6 | Verify Msasa PM and cleaning claims | Eng + QA (HQ) | Next HQ follow-up |
 
 ---
 
-## 7. Open items for follow-up
+## 8. Open items for follow-up
 
 - [ ] Obtain engineering job-card list (director approval) and age each open card
-- [ ] Full asset register with codes, nameplates, and status (running / awaiting parts / uncommissioned)
-- [ ] Confirm identity of the “faster than Msasa” BM and its current location
-- [ ] Quantify solvent use and job sizes on the CI press over a sample period
+- [ ] Full asset register: codes, nameplates, used vs new, status
+- [ ] Confirm identity and location of the “faster than Msasa” BM
+- [ ] Quantify solvent use and job sizes on the CI press (sample period)
 - [ ] Confirm shop blockers and revised open date
 - [ ] Validate tonnage claims against recent production books
 - [ ] Map WIP transfer volumes Msasa ↔ Southerton (frequency, kg, slit returns)
+- [ ] Clarify commissioning blockers on the used core extruder (parts, safety, budget, sign-off)
 
 ---
 
-## 8. Source
+## 9. Sources
 
-Field notes: `raw notes/southerton.md` (visit 21 September 2026).  
-Related audit plan: `ops_audit_plan.md` (Week 3 — Southerton production focus).
+- Field notes: `raw notes/southerton.md` (visit 21 September 2026; updated note: core extruder purchased used)
+- Audit plan: `ops_audit_plan.md` (Week 3 — Southerton)
+- Related Msasa baseline: `handover/2026-09-01-ops-audit-field-notes-handover.md`
