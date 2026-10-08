@@ -35,6 +35,7 @@ Nissan NP200
 Reg number tbc
 nvm tbc
 stationed at bulawayo
+ops/delivery/sales
 -------------------
 non-delivery vehicle 
 Toyota Vitz
@@ -56,5 +57,6 @@ ACG 5086
 
 the firm has the following fleet of vehicles
 unless stated otherwise the vehicle is stationed at Msasa HQ
+
 
 
