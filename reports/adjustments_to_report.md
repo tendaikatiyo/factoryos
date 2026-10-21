@@ -74,3 +74,25 @@ remove this point
 
 
 
+round 3 of adjustments
+4.2.1
+the method and style of writing is a bit machine like and less human
+ "Marketing and CRM capability are thin" 
+
+4.2.2
+
+add that perhaps there is a framework needed that allows planning and related parties to optimise machine allocation with economic sensibilty
+
+4.3.1
+i think i did not explain this clearly
+remove it
+
+4.4.1
+add that an erp is needed to capture movements from raw material receipts through conversion to finished goods, nearer real-time movements,enabling better labelling, and creating less dependence on current stocktake methods
+
+4.4.2
+remove it entirely
+"Programme intent includes parallel run and a target switch around 1 January 2027, with fiscalisation after full migration. Keep payroll stable; use LAN-limited floor terminals consistent with internet policy; design multi-warehouse and internal replenishment explicitly." remove this line
+
+
+

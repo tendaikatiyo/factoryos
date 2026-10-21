@@ -170,13 +170,13 @@ Raw-material stores combine goods-received, raw material stock books, and physic
 ]
 
 #finding[Commercial mobility friction][
-  Pool-vehicle shortage limits field sales visits; only the head of sales has an attached vehicle. Marketing and CRM capability are thin (no dedicated marketing function or CRM).
+  Pool-vehicle shortage limits field sales visits. Marketing and CRM capability are thin (no dedicated marketing function or CRM).
 ]
 
 == Southerton
 
 #finding[Engineering backlog and degraded PR05][
-  Three bagmakers down awaiting parts / engineering feedback; used core extruder trialled then uncommissioned; displaced high-output bagmaker not reassembled (ongoing since November 2025). PR05 is not at full speed due to uncleared error codes. Generator cannot run production, only jog / plate tension. Job-card backlog reportedly escalated to directors (~4 September 2026); copies not reviewed pending approval.
+  Three bagmakers down awaiting parts / engineering feedback; used core extruder trialled then uncommissioned; displaced high-output bagmaker not reassembled (ongoing since November 2025). PR05 is not at full speed due to uncleared error codes. Generator cannot run production, only jog / plate tension. Job-card backlog reportedly escalated to directors (~4 September 2026)
 ]
 
 #finding[Uneconomic jobs on PR05][
