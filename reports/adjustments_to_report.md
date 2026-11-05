@@ -74,7 +74,7 @@ remove this point
 
 
 
-round 3 of adjustments
+round 3 of adjustments (implemented)
 4.2.1
 the method and style of writing is a bit machine like and less human
  "Marketing and CRM capability are thin" 
@@ -94,5 +94,63 @@ add that an erp is needed to capture movements from raw material receipts throug
 remove it entirely
 "Programme intent includes parallel run and a target switch around 1 January 2027, with fiscalisation after full migration. Keep payroll stable; use LAN-limited floor terminals consistent with internet policy; design multi-warehouse and internal replenishment explicitly." remove this line
 
+
+
+round 4 of adjustments (implemented)
+
+global
+core extruder at southerton is XE19
+
+4.2.1
+this point has a lot of evidence but rather it should also discuss the need for a more expediant way of allowing faults at Southerton to be resolved faster and this is important because without it capital will be underutilised and capacity constrained
+
+4.2.2
+dont make the headline about PR05 but use it as evidence in the body to support the need for framework that makes sure jobs are economically viable for the machine they are on
+
+4.3.1
+remove line about payroll
+add about need for modules that support manufacturing and warehousing
+
+4.1.3
+remove this
+
+4.1.4 
+remove the line about enough pool cars 
+and make the headline about dedicated 
+i think rather there is need for a CRM system and a dedicated person owning marketing efforts which will allow the firm to be more agile
+
+4.1.2
+remove line about incomplete paperwork on GR
+
+
+3.2
+remove line about recycling not able to run
+the vans not in service are ADY 6949 and ACG 5086
+
+5.7
+remove IT from owners
+5.4
+affix machines uniformly across all factories
+5.2 
+should be general not specific to PR05
+5.8
+remove it
+
+
+6
+remove it entirely
+
+
+round 5 of adjustment (implemented)
+
+5.4 & 3.4
+Msasa has the same issue, machine codes labeling is not consistently applied
+
+
+add production as owner to 5.4
+
+5.5
+remove IT
+add production,operations,accounts as owners
 
 
