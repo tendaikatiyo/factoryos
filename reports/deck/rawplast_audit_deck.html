@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Process Audit · Rawplast Investments</title>
+<style>
+  @font-face {
+    font-family: "Sequel Head";
+    src: url("fonts/SequelSans-SemiBoldDisp.ttf") format("truetype");
+    font-display: block;
+  }
+  @font-face {
+    font-family: "Sequel Sub";
+    src: url("fonts/SequelSans-BlackOblDisp.ttf") format("truetype");
+    font-display: block;
+  }
+  @font-face {
+    font-family: "Sequel Body";
+    src: url("fonts/SequelSans-RomanDisp.ttf") format("truetype");
+    font-display: block;
+  }
+
+  :root {
+    --blue: #00239C;
+    --blue-deep: #001A73;
+    --blue-tint: #F1F3FA;
+    --red: #EE2737;
+    --white: #FEFEFE;
+    --ink: #10162E;
+    --muted: #5B6380;
+    --line: #DFE3EE;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #0B0F1F;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: "Sequel Body", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+  }
+
+  .viewport {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+
+  .deck {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: center center;
+    flex-shrink: 0;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    padding: 120px 140px 140px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 320ms var(--ease-out), visibility 0s linear 320ms;
+    overflow: hidden;
+  }
+
+  .slide.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 320ms var(--ease-out), visibility 0s;
+  }
+
+  .slide .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms + 80ms);
+  }
+
+  .slide.active .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .slide .reveal { transition: none !important; }
+    .slide .reveal { transform: none; }
+  }
+
+  /* Shared chrome */
+  .kicker {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+  }
+
+  h1, h2 {
+    font-family: "Sequel Head", sans-serif;
+    font-weight: normal;
+    color: var(--blue);
+    letter-spacing: -0.015em;
+  }
+
+  h2 {
+    font-size: 64px;
+    line-height: 1.05;
+    max-width: 1500px;
+  }
+
+  p, li { font-size: 32px; line-height: 1.45; }
+
+  .muted { color: var(--muted); }
+
+  .footer {
+    position: absolute;
+    left: 140px;
+    right: 140px;
+    bottom: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    color: var(--muted);
+  }
+
+  .footer img { height: 44px; display: block; }
+
+  .footer .meta { display: flex; gap: 36px; align-items: center; }
+
+  .footer .num {
+    font-family: "Sequel Head", sans-serif;
+    color: var(--blue);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .attention {
+    margin-top: auto;
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+    padding: 28px 36px;
+    background: var(--blue-tint);
+    border-left: 8px solid var(--red);
+    font-size: 30px;
+    line-height: 1.4;
+  }
+
+  .attention strong {
+    font-family: "Sequel Sub", sans-serif;
+    font-weight: normal;
+    color: var(--red);
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .body-row {
+    display: grid;
+    gap: 80px;
+    margin-top: 64px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .label {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+
+  ul.plain { list-style: none; }
+
+  ul.plain li {
+    position: relative;
+    padding-left: 36px;
+    margin-bottom: 18px;
+  }
+
+  ul.plain li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 14px;
+    height: 14px;
+    background: var(--red);
+  }
+
+  /* Title slide */
+  .title-slide {
+    padding: 0;
+    flex-direction: row;
+  }
+
+  .title-slide .left {
+    flex: 1;
+    padding: 110px 120px 100px 140px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-slide .logo-big { height: 120px; width: auto; align-self: flex-start; }
+
+  .title-slide h1 {
+    font-size: 104px;
+    line-height: 1.0;
+    margin-top: auto;
+  }
+
+  .title-slide .rule {
+    width: 160px;
+    height: 10px;
+    background: var(--red);
+    margin: 48px 0 40px;
+  }
+
+  .title-slide .sub {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 40px;
+    color: var(--ink);
+  }
+
+  .title-slide .right {
+    width: 900px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .title-slide .right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 100%;
+    background: var(--red);
+    z-index: 2;
+  }
+
+  .title-slide .photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 58% 30%;
+    transform: scale(1.04);
+    transition: transform 1600ms var(--ease-out);
+  }
+
+  .title-slide.active .photo { transform: scale(1); }
+
+  .title-slide .facts {
+    position: relative;
+    z-index: 1;
+    background: var(--blue);
+    color: var(--white);
+    padding: 52px 72px 56px 94px;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 36px 56px;
+  }
+
+  .title-slide .fact .k {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 8px;
+  }
+
+  .title-slide .fact .v {
+    font-family: "Sequel Head", sans-serif;
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .title-slide .photo { transform: none; transition: none; }
+  }
+
+  /* Statement slide */
+  .statement {
+    background: var(--blue);
+    color: var(--white);
+    justify-content: center;
+  }
+
+  .statement .kicker { color: var(--white); opacity: 0.8; }
+
+  .statement .big {
+    font-family: "Sequel Head", sans-serif;
+    font-size: 84px;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    max-width: 1560px;
+  }
+
+  .statement .big em {
+    font-style: normal;
+    color: var(--white);
+    box-shadow: inset 0 -0.16em 0 var(--red);
+  }
+
+  .statement .follow {
+    margin-top: 56px;
+    font-size: 36px;
+    max-width: 1300px;
+    opacity: 0.9;
+  }
+
+  .statement .footer { color: rgba(254, 254, 254, 0.7); }
+  .statement .footer .num { color: var(--white); }
+  .statement .footer .logo-chip {
+    background: var(--white);
+    padding: 6px;
+    display: block;
+  }
+
+  /* Priority cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 72px;
+  }
+
+  .card {
+    border-top: 10px solid var(--blue);
+    background: var(--blue-tint);
+    padding: 40px 36px 44px;
+    min-height: 470px;
+  }
+
+  .card .n {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 80px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+
+  .card h3 {
+    font-family: "Sequel Head", sans-serif;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 1.15;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+
+  .card p { font-size: 26px; line-height: 1.45; color: var(--ink); }
+
+  /* Flow (delayed truth) */
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 64px;
+  }
+
+  .step {
+    position: relative;
+    padding: 36px 40px 40px 0;
+    border-top: 4px solid var(--line);
+  }
+
+  .step::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--blue);
+  }
+
+  .step.warn::before { background: var(--red); }
+
+  .step .when {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .step h3 {
+    font-family: "Sequel Head", sans-serif;
+    font-weight: normal;
+    font-size: 36px;
+    color: var(--blue);
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+
+  .step p { font-size: 26px; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+    margin-top: 64px;
+  }
+
+  .stat .figure {
+    font-family: "Sequel Head", sans-serif;
+    font-size: 112px;
+    line-height: 0.95;
+    color: var(--blue);
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+  }
+
+  .stat .figure.sm { font-size: 104px; }
+
+  .stat .figure.red { color: var(--red); }
+
+  .stat .caption {
+    margin-top: 18px;
+    font-size: 28px;
+    line-height: 1.35;
+    max-width: 440px;
+  }
+
+  /* Two columns */
+  .two { grid-template-columns: 1.25fr 1fr; }
+  .two-even { grid-template-columns: 1fr 1fr; }
+  .three { grid-template-columns: repeat(3, 1fr); gap: 56px; }
+
+  .panel {
+    background: var(--blue);
+    color: var(--white);
+    padding: 48px 52px;
+    align-self: start;
+  }
+
+  .panel .label { color: var(--white); opacity: 0.8; }
+
+  .panel ul.plain li::before { background: var(--red); }
+  .panel li { font-size: 28px; }
+
+  .panel h3 {
+    font-family: "Sequel Head", sans-serif;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+
+  .stalled { list-style: none; }
+
+  .stalled li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 2px solid var(--line);
+    font-size: 27px;
+    line-height: 1.3;
+  }
+
+  .stalled li:first-child { border-top: 2px solid var(--line); }
+
+  .stalled .tag {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--red);
+    white-space: nowrap;
+  }
+
+  .col h3 {
+    font-family: "Sequel Head", sans-serif;
+    font-weight: normal;
+    font-size: 40px;
+    color: var(--blue);
+    line-height: 1.15;
+    padding-top: 28px;
+    border-top: 10px solid var(--blue);
+    margin-bottom: 24px;
+  }
+
+  .col p, .col li { font-size: 27px; line-height: 1.45; }
+  .col ul.plain li { margin-bottom: 14px; }
+
+  .col.alt h3 { border-top-color: var(--red); }
+
+  /* Recommendations table */
+  table.recs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 48px;
+  }
+
+  table.recs th {
+    font-family: "Sequel Sub", sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0 24px 16px 0;
+    border-bottom: 4px solid var(--blue);
+  }
+
+  table.recs td {
+    font-size: 24px;
+    line-height: 1.35;
+    padding: 15px 24px 15px 0;
+    border-bottom: 2px solid var(--line);
+    vertical-align: top;
+  }
+
+  table.recs td.n {
+    font-family: "Sequel Head", sans-serif;
+    color: var(--red);
+    width: 60px;
+  }
+
+  table.recs td.owner {
+    color: var(--blue);
+    width: 520px;
+    font-family: "Sequel Head", sans-serif;
+    font-size: 22px;
+  }
+
+  /* Decisions */
+  .decisions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 80px;
+  }
+
+  .decision {
+    border: 3px solid var(--blue);
+    padding: 44px 44px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 460px;
+  }
+
+  .decision .ref {
+    font-family: "Sequel Sub", sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .decision h3 {
+    font-family: "Sequel Head", sans-serif;
+    font-weight: normal;
+    font-size: 40px;
+    color: var(--blue);
+    line-height: 1.15;
+  }
+
+  .decision p { font-size: 26px; }
+
+  /* Close */
+  .close {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .close h2 { font-size: 96px; margin-bottom: 40px; }
+  .close p { font-size: 36px; max-width: 1200px; }
+  .close .logo-big { height: 140px; margin-top: 90px; }
+
+  /* Progress + controls */
+  .progress {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background: var(--red);
+    width: 0;
+    transition: width 320ms var(--ease-out);
+    z-index: 10;
+  }
+
+  .hint {
+    position: fixed;
+    right: 20px;
+    bottom: 14px;
+    font: 13px/1 "Sequel Body", Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.45);
+    z-index: 10;
+    transition: opacity 400ms ease;
+  }
+
+  .hint.hidden { opacity: 0; }
+
+  /* Print: one slide per page */
+  @page { size: 1920px 1080px; margin: 0; }
+
+  @media print {
+    html, body { background: var(--white); overflow: visible; height: auto; }
+    .viewport { position: static; display: block; }
+    .deck { transform: none !important; width: 1920px; height: auto; }
+    .slide {
+      position: relative;
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 1920px;
+      height: 1080px;
+      page-break-after: always;
+      break-after: page;
+      transition: none !important;
+    }
+    .slide .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .progress, .hint { display: none; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="viewport">
+<main class="deck" id="deck">
+
+  <!-- 1. Title -->
+  <section class="slide title-slide" data-title="Title">
+    <div class="left">
+      <img class="logo-big reveal" style="--i:0" src="assets/rawplast-logo.png" alt="Rawplast Industries, Total Packaging Solutions">
+      <h1 class="reveal" style="--i:1">Business<br>Process Audit</h1>
+      <div class="rule reveal" style="--i:2"></div>
+      <div class="sub reveal" style="--i:3">Friction points and prioritised improvements</div>
+    </div>
+    <div class="right">
+      <img class="photo" src="assets/cover-workplace.jpg" alt="Rawplast staff reviewing job paperwork in the warehouse">
+      <div class="facts">
+        <div class="fact reveal" style="--i:2"><div class="k">Company</div><div class="v">Rawplast Investments Pvt. Ltd.</div></div>
+        <div class="fact reveal" style="--i:3"><div class="k">Prepared for</div><div class="v">Directors</div></div>
+        <div class="fact reveal" style="--i:4"><div class="k">Field period</div><div class="v">August – October 2026</div></div>
+        <div class="fact reveal" style="--i:5"><div class="k">Date</div><div class="v">November 2026</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Summary statement -->
+  <section class="slide statement" data-title="Summary">
+    <div class="kicker reveal" style="--i:0">The short version</div>
+    <div class="big reveal" style="--i:1">The machinery, the forms and the people are in place. <em>Information arrives late</em>, and engineering and commercial jobs stay open.</div>
+    <p class="follow reveal" style="--i:2">At Southerton especially, capacity that has already been paid for is under-used. The floor raises problems, but follow-through is uneven.</p>
+    <div class="footer">
+      <img class="logo-chip" src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 3. Immediate priorities -->
+  <section class="slide" data-title="Immediate priorities">
+    <div class="kicker reveal" style="--i:0">Immediate priorities</div>
+    <h2 class="reveal" style="--i:1">Four things to act on first</h2>
+    <div class="cards">
+      <div class="card reveal" style="--i:2">
+        <div class="n">01</div>
+        <h3>Clear the Southerton engineering backlog</h3>
+        <p>An owner and a date on each job.</p>
+      </div>
+      <div class="card reveal" style="--i:3">
+        <div class="n">02</div>
+        <h3>Write the routing rules</h3>
+        <p>Which work runs on which machine, and at Msasa or Southerton.</p>
+      </div>
+      <div class="card reveal" style="--i:4">
+        <div class="n">03</div>
+        <h3>Close the finished-goods lag</h3>
+        <p>Sales, planning and despatch work from the same day, not yesterday’s book.</p>
+      </div>
+      <div class="card reveal" style="--i:5">
+        <div class="n">04</div>
+        <h3>Adopt a stable ERP</h3>
+        <p>Manufacturing and warehousing modules, raw material through finished goods, no crashes that interfere with fiscalisation.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 4. Delayed copies of truth -->
+  <section class="slide" data-title="Delayed copies of truth">
+    <div class="kicker reveal" style="--i:0">Cross-cutting · Stock information</div>
+    <h2 class="reveal" style="--i:1">Finished goods are at least a day behind the floor</h2>
+    <div class="flow">
+      <div class="step reveal" style="--i:2">
+        <div class="when">Day 1</div>
+        <h3>Goods made</h3>
+        <p>Recorded in the finished-goods transfer book.</p>
+      </div>
+      <div class="step reveal" style="--i:3">
+        <div class="when">Day 2</div>
+        <h3>Typed into Excel</h3>
+        <p>The workstation is kept offline by policy, so planning often collects updates by flash drive.</p>
+      </div>
+      <div class="step warn reveal" style="--i:4">
+        <div class="when">Any time</div>
+        <h3>Sales phones despatch</h3>
+        <p>To check availability, despatch stops work and walks the floor.</p>
+      </div>
+      <div class="step warn reveal" style="--i:5">
+        <div class="when">Month end</div>
+        <h3>Stocktake resets the books</h3>
+        <p>Accounts treat only post-stocktake opening balances as accurate.</p>
+      </div>
+    </div>
+    <div class="attention reveal" style="--i:6"><strong>Attention point</strong><span>The local server still runs and files are shared, but stock promises and planning still rest on lagged or monthly figures.</span></div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 5. Southerton fault resolution -->
+  <section class="slide" data-title="Southerton fault resolution">
+    <div class="kicker reveal" style="--i:0">Southerton</div>
+    <h2 class="reveal" style="--i:1">Southerton faults wait months for a fix</h2>
+    <div class="body-row two">
+      <div class="reveal" style="--i:2">
+        <div class="label">What is stalled</div>
+        <ul class="stalled">
+          <li><span>Three bagmakers down, awaiting parts and feedback</span><span class="tag">Eng · Procurement</span></li>
+          <li><span>XE19 core extruder trialled, never commissioned</span><span class="tag">No go-ahead</span></li>
+          <li><span>High-output bagmaker moved, never reassembled</span><span class="tag">Since Nov 2025</span></li>
+          <li><span>PR05 running below full speed</span><span class="tag">Uncleared error codes</span></li>
+          <li><span>Generator can only jog the printer, not produce</span><span class="tag">Needs repair</span></li>
+          <li><span>Job-card list sent to directors, about 4 Sep 2026</span><span class="tag">Some from 2024</span></li>
+        </ul>
+      </div>
+      <div class="panel reveal" style="--i:3">
+        <div class="label">What is needed</div>
+        <h3>A faster way to resolve faults at Southerton</h3>
+        <ul class="plain">
+          <li>A named owner for each fault</li>
+          <li>A target date to resolve it</li>
+          <li>A clear point where stalled parts or approvals go up the line</li>
+        </ul>
+        <p style="font-size:26px; margin-top:28px; opacity:0.9">Without it, machines already paid for keep sitting idle and the site runs well below capacity.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 6. Routing and job size -->
+  <section class="slide" data-title="Routing and job size">
+    <div class="kicker reveal" style="--i:0">Cross-cutting · Routing and job size</div>
+    <h2 class="reveal" style="--i:1">Jobs are not matched to the right machine</h2>
+    <div class="stat-row">
+      <div class="stat reveal" style="--i:2">
+        <div class="figure">1 t</div>
+        <div class="caption">The minimum operators say makes economic sense on PR05</div>
+      </div>
+      <div class="stat reveal" style="--i:3">
+        <div class="figure red">&lt;500 kg</div>
+        <div class="caption">Jobs planning still sends to PR05, with no hard rule to stop it</div>
+      </div>
+      <div class="stat reveal" style="--i:4">
+        <div class="figure">50–100 L</div>
+        <div class="caption">Solvent staff cite per changeover, made worse by wrong job sequencing</div>
+      </div>
+    </div>
+    <div class="attention reveal" style="--i:5"><strong>Needed</strong><span>A framework for planning and scheduling: a minimum run size for each machine, a sensible job order, and a rule for grouping small jobs or sending them to a better-suited machine. Work is also misrouted between Msasa and Southerton.</span></div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 7. Idle capital -->
+  <section class="slide" data-title="Idle and under-used capital">
+    <div class="kicker reveal" style="--i:0">Cross-cutting · Capital</div>
+    <h2 class="reveal" style="--i:1">Assets the business has paid for are not earning</h2>
+    <div class="body-row three">
+      <div class="col reveal" style="--i:2">
+        <h3>Southerton machines</h3>
+        <ul class="plain">
+          <li>XE19 core extruder, bought used, trialled and left uncommissioned</li>
+          <li>Bagmakers waiting on engineering and procurement since at least November 2025</li>
+        </ul>
+      </div>
+      <div class="col alt reveal" style="--i:3">
+        <h3>PR05</h3>
+        <ul class="plain">
+          <li>Runs, but not at full speed, because of uncleared error codes</li>
+          <li>Also takes jobs too small to cover its setup</li>
+        </ul>
+      </div>
+      <div class="col reveal" style="--i:4">
+        <h3>Headquarters vans</h3>
+        <ul class="plain">
+          <li>Mercedes-Benz Sprinter, ADY 6949, not in service</li>
+          <li>Ford Transit, ACG 5086, not in service</li>
+        </ul>
+      </div>
+    </div>
+    <div class="attention reveal" style="--i:5"><strong>Attention point</strong><span>Cash and floor space sit in assets that are not earning while engineering and commercial gaps stay open.</span></div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 8. Msasa -->
+  <section class="slide" data-title="Msasa headquarters">
+    <div class="kicker reveal" style="--i:0">Msasa headquarters</div>
+    <h2 class="reveal" style="--i:1">Where work frays at headquarters</h2>
+    <div class="body-row three">
+      <div class="col reveal" style="--i:2">
+        <h3>Stock and despatch</h3>
+        <ul class="plain">
+          <li>No live view of finished goods for sales or despatch</li>
+          <li>Aged stock held for years against a similar order</li>
+          <li>Large orders collected in fractions, or left for over a month</li>
+          <li>Weak WIP labels slow the monthly count</li>
+        </ul>
+      </div>
+      <div class="col alt reveal" style="--i:3">
+        <h3>Raw-material stores</h3>
+        <ul class="plain">
+          <li>Material found by walking the room; no location system</li>
+          <li>BOPP bought in standard sizes leaves offcuts that rarely get used</li>
+          <li>Night-shift pellet use confirmed with production afterwards</li>
+          <li>Late requisitions force overtime</li>
+        </ul>
+      </div>
+      <div class="col reveal" style="--i:4">
+        <h3>Marketing and CRM</h3>
+        <ul class="plain">
+          <li>No one owns marketing; sales staff cover it on top of their accounts</li>
+          <li>No CRM, so no shared record of who the firm is talking to</li>
+          <li>A CRM and a marketing owner would let the firm follow up leads faster</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 9. Systems and ERP -->
+  <section class="slide" data-title="Systems and ERP">
+    <div class="kicker reveal" style="--i:0">Accounting and systems</div>
+    <h2 class="reveal" style="--i:1">The current software is not built for manufacturing</h2>
+    <div class="body-row two-even" style="margin-top:48px">
+      <div class="reveal" style="--i:2">
+        <div class="label">Today</div>
+        <div class="stat-row" style="margin-top:0; gap:56px; margin-bottom:36px; grid-template-columns: auto 1fr">
+          <div class="stat"><div class="figure sm">13</div><div class="caption">osFinancials stations across the branches</div></div>
+          <div class="stat"><div class="figure sm red">Weekly</div><div class="caption">Crashes that interfere with fiscalisation</div></div>
+        </div>
+        <ul class="plain">
+          <li>During outages, sales invoices by hand and backfills later</li>
+          <li>Stock is entered by hand at each stocktake, not from daily movements</li>
+        </ul>
+      </div>
+      <div class="panel reveal" style="--i:3">
+        <div class="label">What the ERP must do</div>
+        <ul class="plain">
+          <li>Capture movements from raw-material receipt through conversion to finished goods, nearer to real time</li>
+          <li>Stay stable, without crashes that interfere with fiscalisation</li>
+          <li>Include modules for manufacturing and warehousing</li>
+          <li>Make better labelling possible and reduce dependence on stocktake</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 10. Also found -->
+  <section class="slide" data-title="Other findings">
+    <div class="kicker reveal" style="--i:0">Cross-cutting · Other findings</div>
+    <h2 class="reveal" style="--i:1">Issues are raised, but they often stay open</h2>
+    <div class="body-row three">
+      <div class="col reveal" style="--i:2">
+        <h3>Signals without closure</h3>
+        <ul class="plain">
+          <li>Despatch warns when recurring stock runs low; the response is often slow</li>
+          <li>Southerton job cards escalated to directors, some from 2024</li>
+          <li>The City Plastics customer base was never activated</li>
+        </ul>
+      </div>
+      <div class="col alt reveal" style="--i:3">
+        <h3>Labelling and identity</h3>
+        <ul class="plain">
+          <li>WIP often marked by marker pen only</li>
+          <li>No barcodes or SKUs; goods are identified by dimensions and customer</li>
+          <li>Machine codes labelled inconsistently at Msasa and Southerton</li>
+        </ul>
+      </div>
+      <div class="col reveal" style="--i:4">
+        <h3>Single points of failure</h3>
+        <ul class="plain">
+          <li>One person runs goods received, stock books and material movement</li>
+          <li>When the software crashes, invoicing goes manual</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 11. Recommendations -->
+  <section class="slide" data-title="Recommendations">
+    <div class="kicker reveal" style="--i:0">Prioritised recommendations</div>
+    <h2 class="reveal" style="--i:1">Eight actions, each with an owner</h2>
+    <table class="recs reveal" style="--i:2">
+      <thead><tr><th>#</th><th>Action</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Clear the Southerton engineering backlog (PR05 error codes, bagmakers, XE19, generator) and set up a faster fault-resolution path</td><td class="owner">Directors → Engineering / Procurement</td></tr>
+        <tr><td class="n">2</td><td>Written minimum run sizes per machine and Msasa↔Southerton routing rules; brief sales</td><td class="owner">Planning + Sales + Southerton QA</td></tr>
+        <tr><td class="n">3</td><td>Activate the City Plastics-era customer base and local volume for Southerton</td><td class="owner">Sales</td></tr>
+        <tr><td class="n">4</td><td>Affix machine codes uniformly across all factories</td><td class="owner">Production</td></tr>
+        <tr><td class="n">5</td><td>Cut finished-goods lag so shared books match the floor the same day</td><td class="owner">Production + Operations + Planning + Accounting</td></tr>
+        <tr><td class="n">6</td><td>Standardise WIP/FG labelling and SKU identity</td><td class="owner">QA + Production + Planning</td></tr>
+        <tr><td class="n">7</td><td>Adopt a stable ERP with manufacturing and warehousing modules</td><td class="owner">Directors + Accounting</td></tr>
+        <tr><td class="n">8</td><td>Appoint one person to own marketing and adopt a CRM system</td><td class="owner">Directors + Sales</td></tr>
+      </tbody>
+    </table>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 12. Decisions for directors -->
+  <section class="slide" data-title="Decisions for the directors">
+    <div class="kicker reveal" style="--i:0">For the directors</div>
+    <h2 class="reveal" style="--i:1">Three decisions only the directors can make</h2>
+    <div class="decisions">
+      <div class="decision reveal" style="--i:2">
+        <div class="ref">Recommendation 1</div>
+        <h3>Back a fault-resolution path for Southerton</h3>
+        <p>Named owners, target dates and an escalation point for engineering and procurement.</p>
+      </div>
+      <div class="decision reveal" style="--i:3">
+        <div class="ref">Recommendation 7</div>
+        <h3>Commit to a stable ERP</h3>
+        <p>With manufacturing and warehousing modules, covering raw material through finished goods.</p>
+      </div>
+      <div class="decision reveal" style="--i:4">
+        <div class="ref">Recommendation 8</div>
+        <h3>Appoint a marketing owner and adopt a CRM</h3>
+        <p>So leads are followed up and client relationships sit in a shared record.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="assets/rawplast-logo.png" alt="">
+      <div class="meta"><span>Business Process Audit · November 2026</span><span class="num"></span></div>
+    </div>
+  </section>
+
+  <!-- 13. Close -->
+  <section class="slide close" data-title="Close">
+    <div class="kicker reveal" style="--i:0">Full detail</div>
+    <h2 class="reveal" style="--i:1">Questions and discussion</h2>
+    <p class="muted reveal" style="--i:2">The evidence behind each point is in the written Business Process Audit report.</p>
+    <img class="logo-big reveal" style="--i:3" src="assets/rawplast-logo.png" alt="Rawplast Industries, Total Packaging Solutions">
+  </section>
+
+</main>
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="hint" id="hint">← → to navigate · F for full screen</div>
+
+<script>
+(() => {
+  const deck = document.getElementById('deck');
+  const slides = Array.from(deck.querySelectorAll('.slide'));
+  const progress = document.getElementById('progress');
+  const hint = document.getElementById('hint');
+  const total = slides.length;
+  let current = 0;
+
+  slides.forEach((s, i) => {
+    const num = s.querySelector('.num');
+    if (num) num.textContent = `${i + 1} / ${total}`;
+  });
+
+  function fit() {
+    const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    deck.style.transform = `scale(${scale})`;
+  }
+
+  function go(index) {
+    const next = Math.max(0, Math.min(total - 1, index));
+    if (next === current && slides[current].classList.contains('active')) return;
+    slides[current].classList.remove('active');
+    current = next;
+    slides[current].classList.add('active');
+    progress.style.width = `${((current + 1) / total) * 100}%`;
+    history.replaceState(null, '', `#${current + 1}`);
+    document.title = `${slides[current].dataset.title} · Rawplast Audit`;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); go(current + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go(current - 1); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(total - 1);
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.clientX > window.innerWidth / 3) go(current + 1);
+    else go(current - 1);
+  });
+
+  let touchX = null;
+  document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+
+  window.addEventListener('resize', fit);
+  setTimeout(() => hint.classList.add('hidden'), 4000);
+
+  fit();
+  const start = parseInt(location.hash.slice(1), 10);
+  current = Number.isFinite(start) ? Math.max(0, Math.min(total - 1, start - 1)) : 0;
+  document.fonts.ready.then(() => go(current));
+})();
+</script>
+</body>
+</html>
