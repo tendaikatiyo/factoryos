@@ -154,3 +154,9 @@ remove IT
 add production,operations,accounts as owners
 
 
+ROUND 6 (implemented)
+
+sth branch has now open but it opened late
+EX19 is close to commissioning but not yet running, dont mention it in the report though,rather I think the point about finding better ways to ensure immediate maintance responce on broken down machines is important
+
+I dont like how 1.1 is presented I think it should be presented from an abstract point of view discussing especially number 1.1.1

@@ -86,8 +86,10 @@ Sales, planning, and accounts each have a partial view of stock, and of what the
 
 == Immediate priorities
 
-+ Clear the Southerton engineering backlog, with an owner and a date on each job.
-+ Write the rules for which work runs on which machine, and at Msasa or Southerton.
+The priorities below are the decisions that unlock the most capacity and the most reliable day-to-day running. The first is the most urgent.
+
++ Put in place a faster path from machine fault to repair, especially at Southerton, so broken-down assets do not sit idle while capacity stays constrained. Each open fault needs an owner, a target date, and a clear point at which stalled parts or approvals go up the line.
++ Agree written rules for which work runs on which machine, and at Msasa or Southerton, so jobs are matched to capacity that can carry them economically.
 + Close the finished-goods lag so sales, planning, and despatch work from the same day, not yesterday’s book.
 + Adopt a stable ERP with manufacturing and warehousing modules, covering raw material through finished goods, that does not crash often or interfere with fiscalisation.
 
@@ -117,7 +119,7 @@ A local server is still running and internal sharing of files does happen across
 
 == Idle and under-used capital
 
-At Southerton, the used core extruder XE19 was trialled then left uncommissioned. Multiple bagmakers await engineering and procurement (since at least November 2025). PR05 runs, but not at full speed, because of uncleared error codes. At headquarters, two vans are not in service: the Mercedes-Benz Sprinter (ADY 6949) and the Ford Transit (ACG 5086).
+At Southerton, multiple bagmakers await engineering and procurement (since at least November 2025). PR05 runs, but not at full speed, because of uncleared error codes. Faults that should be routine maintenance instead wait weeks or months for parts, feedback, or sign-off. At headquarters, two vans are not in service: the Mercedes-Benz Sprinter (ADY 6949) and the Ford Transit (ACG 5086).
 
 *Attention point:* cash and floor space sit in assets that are not earning while engineering and commercial gaps stay open.
 
@@ -176,12 +178,17 @@ Raw-material stores combine goods-received, raw material stock books, and physic
 == Southerton
 
 #finding[Slow fault resolution at Southerton][
-  Three of Southerton’s bagmakers are down, waiting on parts and feedback from engineering and procurement. The used core extruder XE19 was set up and given a trial run, but it was never formally commissioned because engineering has not given the go-ahead. The bagmaker that used to stand in that spot, which staff say outpaced the Msasa machines per hour, was moved and never reassembled. This has been dragging on since November 2025.
+  Three of Southerton’s bagmakers are down, waiting on parts and feedback from engineering and procurement. A high-output bagmaker that staff say outpaced the Msasa machines per hour was moved and never reassembled. This has been dragging on since November 2025.
 
   PR05 runs below full speed because of error codes that engineering has not cleared. The site generator can only jog the printer and release tension on the printing plates, so no machine can produce on it. Southerton’s QA officer says he sent directors the list of open engineering job cards around 4 September 2026, some of them dating back to 2024.
 
-  There is no quick path from a fault being reported at Southerton to it being fixed. Faults wait on engineering feedback, parts, and sign-off, and so far the only escalation has been a list sent to directors. The site’s engineering staff member is stronger on electrical than mechanical work, so mechanical faults depend on the wider engineering team. Southerton needs a faster way to resolve faults: a named owner for each one, a target date, and a clear point at which stalled parts or approvals go up the line. Without it, machines the business has already paid for will keep sitting idle and the site will keep running well below its capacity.
+  There is no quick path from a fault being reported at Southerton to it being fixed. Faults wait on engineering feedback, parts, and sign-off, and so far the only escalation has been a list sent to directors. The site’s engineering staff member is stronger on electrical than mechanical work, so mechanical faults depend on the wider engineering team. What the site needs is a faster maintenance response: a named owner for each fault, a target date, and a clear point at which stalled parts or approvals go up the line. Without it, machines the business has already paid for will keep sitting idle and the site will keep running well below its capacity.
 ]
+
+#finding[Walk-in shop opened late][
+  The Southerton walk-in shop was fitted out and signed well ahead of its planned open date of 1 September 2026. It was still closed through early October. It has since opened, but late. Fit-out, signage, and the plan to staff the front from headquarters sales were in place; the opening itself was not. The delay left a ready retail front sitting unused while the site already had unused production capacity, and it leaves open questions about how walk-in stock is replenished from headquarters and who owns day-to-day trading at the shop.
+]
+
 == Accounting and systems
 
 #finding[Unstable systems path; need for ERP][
@@ -201,7 +208,7 @@ Raw-material stores combine goods-received, raw material stock books, and physic
   inset: 6pt,
   stroke: 0.5pt + luma(180),
   [*\#*], [*Action*], [*Owner (role)*],
-  [1], [Clear the Southerton engineering backlog (PR05 error codes, bagmakers, XE19, generator) and set up a faster fault-resolution path: a named owner and target date for each fault, and a clear escalation point], [Directors → Engineering / Procurement],
+  [1], [Clear the Southerton engineering backlog (PR05 error codes, bagmakers, generator) and put in place a faster maintenance response: a named owner and target date for each fault, and a clear escalation point], [Directors → Engineering / Procurement],
   [2], [Written minimum run sizes per machine and Msasa↔Southerton routing rules; brief sales], [Planning + Sales + Southerton QA],
   [3], [Activate the City Plastics-era customer base and local volume for Southerton], [Sales],
   [4], [Affix machine codes uniformly across all factories, Msasa and Southerton included], [Production],
@@ -222,9 +229,6 @@ Raw-material stores combine goods-received, raw material stock books, and physic
   inset: 6pt,
   stroke: 0.5pt + luma(180),
   [*Abbreviation*], [*Meaning*],
-  [BOPP], [Biaxially oriented polypropylene, the packaging film bought in standard sizes],
-  [PR05], [Southerton central-impression flexo printer (machine code PR05)],
-  [XE19], [Southerton used core extruder (machine code XE19)],
   [CRM], [Customer relationship management],
   [ERP], [Enterprise resource planning],
   [FG], [Finished goods],
