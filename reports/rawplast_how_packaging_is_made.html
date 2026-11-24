@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Rawplast — How the packaging is made</title>
+<style>
+  @font-face {
+    font-family: "Sequel";
+    src: url("deck/fonts/SequelSans-RomanDisp.ttf") format("truetype");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Sequel";
+    src: url("deck/fonts/SequelSans-SemiBoldDisp.ttf") format("truetype");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "Sequel";
+    src: url("deck/fonts/SequelSans-BlackOblDisp.ttf") format("truetype");
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  :root {
+    --blue: #00239C;
+    --blue-deep: #001560;
+    --red: #EE2737;
+    --ink: #14182A;
+    --muted: #3E465C;
+    --line: #D5DAE8;
+    --paper: #F3F1EA;
+    --card: #FFFdf8;
+    --chip: #E6E9F4;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2A2E3A;
+    font-family: "Sequel", "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+  }
+  .hint {
+    color: #E6E8EF;
+    font-size: 13px;
+    text-align: center;
+    padding: 14px 16px 6px;
+  }
+
+  .poster {
+    width: 841mm;
+    height: 594mm;
+    margin: 12px auto 28px;
+    background: var(--paper);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto minmax(0, 1fr);
+    padding: 6mm 7mm 5mm 8mm;
+    gap: 2.6mm;
+    position: relative;
+  }
+  .poster::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3mm;
+    background: var(--red);
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 58mm 1fr auto;
+    gap: 4mm;
+    align-items: center;
+  }
+  header img { width: 58mm; height: auto; display: block; background: white; }
+  header h1 {
+    margin: 0;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 28pt;
+    line-height: 0.92;
+    color: var(--blue-deep);
+    letter-spacing: -0.02em;
+  }
+  header h1 span { color: var(--red); }
+  header p {
+    margin: 1mm 0 0;
+    font-size: 11pt;
+    line-height: 1.25;
+    color: var(--muted);
+    max-width: 168mm;
+  }
+  .meta {
+    text-align: right;
+    font-size: 10pt;
+    line-height: 1.3;
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .meta b { display: block; color: var(--ink); font-size: 8.4pt; }
+
+  .route {
+    background: var(--blue-deep);
+    color: white;
+    display: grid;
+    grid-template-columns: 24mm 1fr;
+    align-items: stretch;
+  }
+  .route .label {
+    display: flex;
+    align-items: center;
+    padding-left: 2.5mm;
+    font-size: 7.4pt;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: #F6C2C6;
+  }
+  .steps { display: flex; gap: 1.2mm; padding: 1.3mm 1.6mm; }
+  .step {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border: 0.25mm solid rgba(255,255,255,0.16);
+    padding: 1mm 1.6mm 1.1mm;
+  }
+  .step.opt { border-style: dashed; }
+  .step .n {
+    font-size: 7pt;
+    font-weight: 800;
+    font-style: italic;
+    color: #ff8b94;
+  }
+  .step strong { display: block; font-size: 10pt; line-height: 1.05; margin-top: 0.2mm; }
+  .step em {
+    display: block;
+    font-style: normal;
+    font-size: 8pt;
+    line-height: 1.18;
+    color: #C9D0E6;
+    margin-top: 0.3mm;
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1.12fr 1.12fr;
+    gap: 2.6mm;
+    min-height: 0;
+  }
+  .cols article { min-height: 0; }
+  article {
+    background: var(--card);
+    border: 0.25mm solid var(--line);
+    padding: 2.6mm 3mm 2.4mm;
+    min-height: 0;
+  }
+  h2 {
+    margin: 0 0 1.4mm;
+    font-size: 16pt;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--blue);
+    line-height: 1;
+    border-bottom: 0.45mm solid var(--red);
+    padding-bottom: 0.9mm;
+  }
+  h2 small {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 7pt;
+    color: var(--muted);
+    margin-left: 1.5mm;
+  }
+  h3 {
+    margin: 1.8mm 0 0.45mm;
+    font-size: 9.5pt;
+    font-weight: 600;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+  }
+  p, li { font-size: 11.5pt; line-height: 1.28; }
+  p { margin: 0; }
+  p + p { margin-top: 1mm; }
+  ul { margin: 0.4mm 0 0; padding: 0; list-style: none; }
+  li { position: relative; padding-left: 2.6mm; margin-top: 0.7mm; }
+  li::before {
+    content: "";
+    width: 1.1mm; height: 1.1mm;
+    background: var(--red);
+    position: absolute;
+    left: 0; top: 0.85mm;
+  }
+  strong { font-weight: 600; }
+  .note {
+    background: var(--chip);
+    padding: 1.2mm 1.6mm;
+    margin-top: 1.2mm;
+    font-size: 10.5pt;
+    line-height: 1.26;
+  }
+  .split { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2mm; }
+
+  .band {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr 0.9fr;
+    gap: 2.6mm;
+    min-height: 0;
+  }
+  .band article { min-height: 0; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 0.8mm; }
+  th, td {
+    text-align: left;
+    font-size: 10pt;
+    line-height: 1.22;
+    padding: 0.8mm 1.1mm;
+    vertical-align: top;
+    border-bottom: 0.15mm solid var(--line);
+  }
+  th {
+    font-size: 8pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 600;
+    border-bottom: 0.3mm solid var(--blue);
+  }
+  td:first-child { font-weight: 600; white-space: nowrap; }
+
+  svg.fig { width: 100%; height: auto; display: block; }
+  .cap { font-size: 9pt; color: var(--muted); line-height: 1.22; margin-top: 0.8mm; }
+
+  footer.levers {
+    background: white;
+    border: 0.25mm solid var(--line);
+    display: grid;
+    grid-template-columns: 28mm 1fr;
+    align-items: center;
+    gap: 2mm;
+    padding: 0 2.5mm;
+  }
+  footer .k {
+    font-weight: 800;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--red);
+    line-height: 0.95;
+  }
+  .lever-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2mm; }
+  .lever b { display: block; font-size: 9pt; color: var(--blue-deep); }
+  .lever span { display: block; font-size: 8pt; line-height: 1.2; }
+
+  .closer {
+    background: var(--blue-deep);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 4mm 8mm;
+    min-height: 0;
+  }
+  .closer p {
+    margin: 0;
+    font-size: 26pt;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+    max-width: 780mm;
+  }
+  .closer span { color: #ff8b94; }
+
+  @page { size: 841mm 594mm; margin: 0; }
+  @media screen { .poster { zoom: 0.42; margin: 8px auto 18px; } }
+  @media print {
+    body { background: white; }
+    .hint { display: none; }
+    .poster { margin: 0; zoom: 1; }
+  }
+</style>
+</head>
+<body>
+<p class="hint">Print A1 landscape, 100% scale, headers off. reports/rawplast_how_packaging_is_made.html</p>
+
+<div class="poster">
+  <header>
+    <img src="assets/rawplast_logo.png" alt="Rawplast Industries" />
+    <div>
+      <h1>How the packaging <span>is made</span></h1>
+      <p>Make-to-order flexible packaging. Pellets become film. Film becomes plain rolls, printed webs, autopack, or bags. A works order visits only the stops it ticks.</p>
+    </div>
+    <div class="meta">
+      <b>Msasa makes the film.</b>
+      Southerton prints on PR05<br />and bags Msasa work-in-progress.<br />
+      Two shifts. Kilograms and units.
+    </div>
+  </header>
+
+  <section class="route" aria-label="Job route">
+    <div class="label">The<br />route</div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><strong>Mix</strong><em>Base, LLDPE, additive. Issued to the works order.</em></div>
+      <div class="step"><div class="n">02</div><strong>Extrude</strong><em>Blown film. A bubble, collapsed, wound to a target kg.</em></div>
+      <div class="step"><div class="n">03</div><strong>Treat</strong><em>Corona when ink must hold. Marked UT, T1, or T2.</em></div>
+      <div class="step opt"><div class="n">04</div><strong>Print</strong><em>Flexo. Stack presses, or PR05 against one drum.</em></div>
+      <div class="step opt"><div class="n">05</div><strong>Laminate</strong><em>Two films bonded. Usually BOPP with MBOPP.</em></div>
+      <div class="step opt"><div class="n">06</div><strong>Slit</strong><em>Master roll cut to the width the customer runs.</em></div>
+      <div class="step opt"><div class="n">07</div><strong>Bag</strong><em>Weld, cut, gusset, punch. Counted bags.</em></div>
+    </div>
+  </section>
+
+  <div class="cols">
+    <article>
+      <h2>Raw materials <small>pellets, film, and what goes back</small></h2>
+      <p>Polyethylene arrives as pellets and is melted on the extruders. Polypropylene arrives already as film. They are different polymers and they do not go through the same machine.</p>
+      <h3>Polyethylene pellets</h3>
+      <ul>
+        <li><strong>LDPE</strong> — low-density. Soft, seals at a low temperature, the usual base for bags, shrink, liners, and sheeting.</li>
+        <li><strong>LLDPE</strong> — linear low-density. Tougher, better puncture, stronger seals. Blended into the base. The works order writes the recipe as Base / LLDPE / Additive.</li>
+        <li><strong>HDPE</strong> — high-density. Stiffer and crisper, so it can run thinner. Carrier bags and stronger film.</li>
+        <li><strong>Recycled pellets</strong> — factory scrap melted again. Black sheeting and blends. Clear work and food-critical jobs stay on virgin resin.</li>
+      </ul>
+      <h3>Additives, a few percent</h3>
+      <ul>
+        <li><strong>Colour masterbatch</strong> carries the pigment in a carrier pellet.</li>
+        <li><strong>Slip</strong> lets the film slide and lets a bag open.</li>
+        <li><strong>Antiblock</strong> stops the layers sticking down on the roll.</li>
+        <li><strong>UV, antistatic, processing aid</strong> go in when the job asks.</li>
+      </ul>
+      <h3>Bought as film, not pellets</h3>
+      <ul>
+        <li><strong>BOPP</strong> — biaxially oriented polypropylene. Clear, stiff, glossy. It was stretched in two directions on a tenter, which a blown-film line does not do. Suppliers stock standard widths, so slitting to the job leaves offcuts.</li>
+        <li><strong>MBOPP</strong> — the same film with a vacuum-deposited metal layer. Shine, and a barrier to light and moisture. Laminated against printed BOPP for autopack.</li>
+      </ul>
+      <p style="margin-top:1mm">Also in the stores: flexo inks, wash solvent, laminating adhesive, board for cores.</p>
+      <div class="note"><strong>Recycling.</strong> Offcuts from every wing go to two-stage machines: ground, melted, cooled, cut into pellets, then booked as a raw-material receipt. The two recyclers do not run together. On generator, a recycler and a printer do not run together either. Night shift sometimes draws pellets straight from this wing; the kilograms still go back onto the raw-material book.</div>
+    </article>
+
+    <article>
+      <h2>Blown-film extruders <small>one mix, one screw, one bubble</small></h2>
+      <div class="split">
+        <div>
+          <p>This is the conversion the factory is built on. Monolayer blown film.</p>
+          <ul>
+            <li>The operator mixes the formulation in the half-drum, then loads the hopper by the bucket.</li>
+            <li>A screw melts the pellets in a heated barrel. The log records barrel, adaptor, and die.</li>
+            <li>Melt leaves through a ring-shaped die. Air inflates a bubble.</li>
+            <li>An air ring freezes the bubble. Nip rollers collapse it and pull it away.</li>
+            <li>It is wound on a core to a target roll weight. The operator marks weight and customer. Finished goods checks the book at the end of the shift.</li>
+          </ul>
+          <h3>What actually sets the film</h3>
+          <ul>
+            <li><strong>Die size and air</strong> set the layflat width. More air, wider film. Layflat is the width of the collapsed tube.</li>
+            <li><strong>Nip speed against screw RPM</strong> sets the gauge, in microns. Haul faster and the wall thins. Push more melt and it thickens.</li>
+            <li><strong>Tubing</strong> is the collapsed bubble left closed, both edges already folded. <strong>Sheeting</strong> is that tube slit into a single web.</li>
+          </ul>
+          <h3>Treatment</h3>
+          <p>Polyethylene is waxy. A corona discharge across the running web raises the surface so solvent ink can key. The order marks <strong>UT</strong> (untreated), <strong>T1</strong>, or <strong>T2</strong>. Print jobs are treated. Shrink, liners, and many plain bags are not. Treatment fades if a roll waits, and a dead surface will not hold a clean print.</p>
+        </div>
+        <div>
+          <svg class="fig" viewBox="0 0 210 268" role="img" aria-label="Blown film line from the side">
+            <rect width="210" height="268" fill="#F6F4EE"/>
+            <text x="8" y="14" font-size="8" font-family="Sequel, Arial" fill="#00239C" font-weight="600">BLOWN FILM, SIDE VIEW</text>
+            <polygon points="14,26 46,26 38,46 22,46" fill="none" stroke="#14182A" stroke-width="1.3"/>
+            <text x="52" y="40" font-size="8" font-family="Sequel, Arial" fill="#3E465C">hopper</text>
+            <rect x="20" y="46" width="22" height="62" fill="none" stroke="#14182A" stroke-width="1.3"/>
+            <path d="M26 52 q7 7 0 14 q-7 7 0 14 q7 7 0 14 q-7 7 0 12" fill="none" stroke="#EE2737" stroke-width="1.1"/>
+            <text x="50" y="78" font-size="8" font-family="Sequel, Arial" fill="#3E465C">screw in</text>
+            <text x="50" y="88" font-size="8" font-family="Sequel, Arial" fill="#3E465C">the barrel</text>
+            <polygon points="16,108 46,108 40,122 22,122" fill="#00239C"/>
+            <text x="50" y="118" font-size="8" font-family="Sequel, Arial" fill="#3E465C">ring die</text>
+            <path d="M28 122 C 16 148, 8 168, 16 196 C 26 214, 42 214, 52 196 C 60 168, 52 148, 40 122" fill="none" stroke="#00239C" stroke-width="1.5"/>
+            <line x1="30" y1="140" x2="30" y2="188" stroke="#EE2737" stroke-width="0.8" stroke-dasharray="2 2"/>
+            <line x1="12" y1="136" x2="56" y2="136" stroke="#14182A" stroke-width="0.9"/>
+            <text x="64" y="140" font-size="8" font-family="Sequel, Arial" fill="#3E465C">air ring</text>
+            <text x="64" y="168" font-size="8" font-family="Sequel, Arial" fill="#EE2737">air inside</text>
+            <text x="64" y="196" font-size="8" font-family="Sequel, Arial" fill="#00239C">bubble</text>
+            <rect x="20" y="214" width="28" height="6" rx="1.5" fill="#14182A"/>
+            <rect x="20" y="223" width="28" height="6" rx="1.5" fill="#14182A"/>
+            <text x="54" y="224" font-size="8" font-family="Sequel, Arial" fill="#3E465C">nip collapses it</text>
+            <circle cx="34" cy="250" r="10" fill="none" stroke="#14182A" stroke-width="1.3"/>
+            <circle cx="34" cy="250" r="3" fill="#EE2737"/>
+            <text x="50" y="254" font-size="8" font-family="Sequel, Arial" fill="#3E465C">wind on a core</text>
+          </svg>
+          <p class="cap">Several extruders can share one works order. A rewinder beside them takes large pallet-wrap rolls down to hand rolls.</p>
+        </div>
+      </div>
+      <div class="note"><strong>Other extruders in the wider industry.</strong> Cast film lays melt onto a chill roll: very clear, common for machine stretch wrap. Co-extrusion feeds two to five screws into one die, so one film can be soft in the middle and stiff on the faces, or carry a barrier layer. The house lines are monolayer blown film. Machine codes in the Msasa wing run through the EX series.</div>
+    </article>
+
+    <article>
+      <h2>Printers <small>flexo — raised plate, metered ink</small></h2>
+      <p>Artwork is signed with size and Pantone codes. A photopolymer plate is made in the plate room. The plate belongs to the customer unless the paperwork says otherwise. Operators mix ink to the swatch on the machine. Quality signs the match, then the order runs. Up to three people on a press: setup, ink, the run.</p>
+      <svg class="fig" viewBox="0 0 560 78" role="img" aria-label="One flexo colour station">
+        <rect width="560" height="78" fill="#F6F4EE"/>
+        <rect x="18" y="18" width="54" height="26" fill="#fff" stroke="#14182A" stroke-width="1.4"/>
+        <text x="28" y="62" font-size="11" font-family="Sequel, Arial" fill="#3E465C">ink</text>
+        <circle cx="130" cy="30" r="20" fill="#fff" stroke="#EE2737" stroke-width="1.7"/>
+        <text x="108" y="62" font-size="11" font-family="Sequel, Arial" fill="#EE2737">anilox</text>
+        <circle cx="196" cy="28" r="22" fill="#fff" stroke="#00239C" stroke-width="1.7"/>
+        <text x="168" y="62" font-size="11" font-family="Sequel, Arial" fill="#00239C">plate</text>
+        <rect x="232" y="8" width="11" height="46" fill="#14182A"/>
+        <line x1="243" y1="14" x2="430" y2="14" stroke="#00239C" stroke-width="1.8"/>
+        <polygon points="300,14 312,9 312,19" fill="#EE2737"/>
+        <text x="318" y="32" font-size="11" font-family="Sequel, Arial" fill="#00239C">film running past the plate</text>
+        <text x="455" y="20" font-size="11" font-family="Sequel, Arial" fill="#3E465C">printed web</text>
+        <text x="248" y="62" font-size="11" font-family="Sequel, Arial" fill="#3E465C">impression</text>
+      </svg>
+      <p class="cap">The anilox is a roller covered in tiny cells. Cell volume is how much ink that colour lays down. Only the raised parts of the plate touch the film.</p>
+      <ul>
+        <li><strong>Cylinder circumference is the repeat</strong> — the length of design before it comes round again. Print-across is how many copies sit side by side.</li>
+        <li><strong>Each station has its own anilox.</strong> Larger cells lay a heavier ink film. Heavier ink is stronger colour and slower drying.</li>
+        <li><strong>Register</strong> is the colours landing on each other. If the film stretches between stations, the colours walk.</li>
+      </ul>
+      <h3>Two kinds of press</h3>
+      <ul>
+        <li><strong>Stack, PR01–PR04 at Msasa.</strong> Colour units one above another. Each colour has its own impression. The everyday printers.</li>
+        <li><strong>Central impression, PR05 at Southerton.</strong> German. Every colour prints while the film is held on one large drum, so the web is not free to stretch between colours. The finish is spoken of next to gravure. Wash-up between designs is heavy, on the order of 50 to 100 litres of solvent, so operators treat about a tonne as the run that makes sense. Smaller jobs still land on it, and the solvent is what gets burnt.</li>
+      </ul>
+      <div class="note"><strong>Gravure</strong> cuts the image into a metal cylinder. Fine tone, expensive cylinders, long runs. It is not in the fleet. PR05 is the quality route that does not need those cylinders. <strong>Laminator:</strong> adhesive bonds two webs, usually printed BOPP to MBOPP, then the roll is slit and leaves as autopack — the customer’s machine forms the pack. Printing operators run the laminator. <strong>Slitter:</strong> a job can finish here and never see a bag maker. Southerton’s slitter is not the one those widths rely on, so some printed work returns to Msasa to be slit.</div>
+    </article>
+  </div>
+
+  <div class="band">
+    <article>
+      <h2>Bag makers <small>they do not make film — they close it</small></h2>
+      <div class="split" style="grid-template-columns: 1.05fr 0.95fr;">
+        <div>
+          <p>One operator. The roll is plain from extrusion, or it has come back printed. The order names the seal, the length, and the features.</p>
+          <ul>
+            <li>The web unwinds under tension. Slack and the seal wanders. Too tight and the film stretches or snaps.</li>
+            <li>Gusset boards, when called, push a fold in so the filled bag has room.</li>
+            <li>A heated bar welds polyethylene to itself. A knife cuts the bag off at length. Bags are stacked and counted.</li>
+          </ul>
+          <h3>The two seals</h3>
+          <ul>
+            <li><strong>Bottom seal, from tubing.</strong> A weld across the tube is the bottom. The cut edge is the mouth. The tube’s folded edges are the sides. Bread bags, produce, many liners.</li>
+            <li><strong>Side seal, from a fold.</strong> The fold is the bottom. Welds at intervals become the two sides. The edge opposite the fold is the mouth. Retail and carrier bags.</li>
+          </ul>
+          <p style="margin-top:1mm"><strong>Features on the same path:</strong> gusset, flap, flip, punch for a hanger or wicket, hem, handles, perforation, emboss, C-fold, sleeves. The core machine in this wing winds board into paper cores — sold, or kept for film and handheld pallet wrap.</p>
+        </div>
+        <div>
+          <svg class="fig" viewBox="0 0 250 210" role="img" aria-label="Bottom seal and side seal">
+            <rect width="250" height="210" fill="#F6F4EE"/>
+            <text x="8" y="14" font-size="8" font-family="Sequel, Arial" fill="#00239C" font-weight="600">BOTTOM SEAL</text>
+            <rect x="28" y="28" width="52" height="70" fill="#fff" stroke="#00239C" stroke-width="1.3"/>
+            <line x1="28" y1="98" x2="80" y2="98" stroke="#EE2737" stroke-width="3"/>
+            <text x="86" y="40" font-size="8" font-family="Sequel, Arial" fill="#3E465C">mouth</text>
+            <text x="86" y="66" font-size="8" font-family="Sequel, Arial" fill="#00239C">folded sides</text>
+            <text x="86" y="100" font-size="8" font-family="Sequel, Arial" fill="#EE2737">welded bottom</text>
+            <text x="8" y="128" font-size="8" font-family="Sequel, Arial" fill="#00239C" font-weight="600">SIDE SEAL</text>
+            <rect x="28" y="136" width="52" height="64" fill="#fff" stroke="#00239C" stroke-width="1.3"/>
+            <line x1="28" y1="136" x2="28" y2="200" stroke="#EE2737" stroke-width="3"/>
+            <line x1="80" y1="136" x2="80" y2="200" stroke="#EE2737" stroke-width="3"/>
+            <line x1="28" y1="200" x2="80" y2="200" stroke="#00239C" stroke-width="2"/>
+            <text x="86" y="150" font-size="8" font-family="Sequel, Arial" fill="#3E465C">mouth</text>
+            <text x="86" y="168" font-size="8" font-family="Sequel, Arial" fill="#EE2737">side welds</text>
+            <text x="86" y="200" font-size="8" font-family="Sequel, Arial" fill="#00239C">fold = bottom</text>
+          </svg>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <h2>What leaves the gate</h2>
+      <table>
+        <thead><tr><th>Product</th><th>Path</th><th>Material</th></tr></thead>
+        <tbody>
+          <tr><td>Tubing</td><td>Extrude</td><td>LDPE, LLDPE blend, HDPE</td></tr>
+          <tr><td>Sheeting</td><td>Extrude, slit open</td><td>Same resins</td></tr>
+          <tr><td>Shrink</td><td>Extrude</td><td>LDPE / LLDPE. Tightens with heat</td></tr>
+          <tr><td>Case liner</td><td>Extrude, sometimes bag</td><td>LDPE / LLDPE</td></tr>
+          <tr><td>Pallet wrap</td><td>Extrude, rewind for hand rolls</td><td>LDPE / LLDPE</td></tr>
+          <tr><td>Printed rolls</td><td>Extrude, treat, print</td><td>Treated polyethylene</td></tr>
+          <tr><td>Autopack</td><td>Print and/or laminate, slit</td><td>PE, or BOPP + MBOPP</td></tr>
+          <tr><td>Plain bags</td><td>Extrude, then bag</td><td>LDPE, HDPE</td></tr>
+          <tr><td>Printed bags</td><td>Extrude, treat, print, bag</td><td>Treated PE; some BOPP</td></tr>
+          <tr><td>Black sheet</td><td>Extrude</td><td>Recycled pellets in the mix</td></tr>
+          <tr><td>Cores</td><td>Core machine</td><td>Board, not polymer</td></tr>
+        </tbody>
+      </table>
+      <p class="cap">BOPP can be printed, laminated, slit, and shipped with no extruder and no bag maker. Clear tubing for a customer who bags it themselves stops at extrusion.</p>
+    </article>
+
+    <article>
+      <h2>Keep these straight</h2>
+      <ul>
+        <li><strong>Gauge</strong> — thickness in microns. The bubble moves, so the order carries a tolerance.</li>
+        <li><strong>Layflat</strong> — width of the collapsed tube or sheet.</li>
+        <li><strong>Repeat</strong> — print length, set by the plate cylinder.</li>
+        <li><strong>Anilox</strong> — engraved roller that doses ink, one per colour.</li>
+        <li><strong>Register</strong> — colours sitting on each other.</li>
+        <li><strong>WIP</strong> — a roll between wings. Extruded, not yet printed. Printed, not yet slit or bagged.</li>
+        <li><strong>Autopack</strong> — film cut for the customer’s own packing machine.</li>
+        <li><strong>±10%</strong> — commercial quantity tolerance. The floor still books kg and units.</li>
+      </ul>
+      <div class="note">Extrusion makes the film. Treatment lets ink hold. Printing puts the design on. Lamination and slitting build autopack. Bag making welds and cuts. Recycling puts scrap back in the hopper. The contract is the order confirmation. The factory instruction is the works order. A change is a new works order.</div>
+    </article>
+  </div>
+
+  <footer class="levers">
+    <div class="k">On the works order</div>
+    <div class="lever-row">
+      <div class="lever"><b>Formulation</b><span>Base, LLDPE, additive, recycle. What the store issues.</span></div>
+      <div class="lever"><b>Width and gauge</b><span>Layflat and microns. Die, air, nip speed, RPM.</span></div>
+      <div class="lever"><b>Treatment</b><span>UT, T1, T2. Print is treated. Plain often is not.</span></div>
+      <div class="lever"><b>Print</b><span>Colours, cylinder, repeat, anilox, ink code.</span></div>
+      <div class="lever"><b>Bag</b><span>Side or bottom seal, gusset, flap, punch, hem, handles.</span></div>
+      <div class="lever"><b>Route ticks</b><span>Extrude, print, laminate, slit, bag, recycle, core.</span></div>
+    </div>
+  </footer>
+
+  <section class="closer">
+    <p>Extrusion makes the film. <span>Treatment</span> lets the ink hold. Printing puts the design on. Lamination and slitting build the autopack roll. Bag making welds and cuts. Recycling puts the scrap back in the hopper.</p>
+  </section>
+</div>
+</body>
+</html>
