@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rawplast Industries · How a flexible packaging plant works</title>
+<style>
+@font-face{font-family:"Seq";src:url("deck/fonts/SequelSans-RomanDisp.ttf");font-weight:400}
+@font-face{font-family:"Seq";src:url("deck/fonts/SequelSans-SemiBoldDisp.ttf");font-weight:600}
+@font-face{font-family:"SeqBlack";src:url("deck/fonts/SequelSans-BlackOblDisp.ttf")}
+@page{size:841mm 594mm;margin:0}
+:root{--blue:#00239C;--deep:#001560;--red:#EE2737;--tint:#E9EDF8;--film:#CFE0F5;--ink:#1A2140;--grey:#8A93AD}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff}
+body{font-family:"Seq",Arial,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#pv:target{zoom:.4717}
+.gl.prod dt{color:var(--deep)}
+.poster{width:841mm;height:594mm;overflow:hidden;display:grid;grid-template-rows:56mm 1fr;background:#F2F4FA}
+
+/* header */
+.top{background:var(--deep);color:#fff;display:grid;grid-template-columns:128mm 1fr 132mm 132mm;gap:8mm;align-items:center;padding:0 14mm;border-bottom:3mm solid var(--red)}
+.logo{background:#fff;border-radius:2mm;padding:3mm;display:flex;align-items:center;justify-content:center;height:42mm}
+.logo img{width:118mm;height:auto;display:block}
+.title h1{font-family:"SeqBlack";font-weight:400;font-size:47pt;line-height:1;margin:0;letter-spacing:-.3pt}
+.title h1 span{color:#FF5A66}
+.title p{margin:3mm 0 0;font-size:16pt;line-height:1.25;color:#C9D3F2}
+.site{background:rgba(255,255,255,.08);border-left:2.2mm solid var(--red);padding:3mm 4mm;height:42mm;display:flex;flex-direction:column;justify-content:center}
+.site b{color:#fff;font-weight:600;font-size:16pt;display:block;margin-bottom:1.2mm}
+.site b small{font-weight:400;font-size:12pt;color:#AFC0EE}
+.site span{font-size:12pt;line-height:1.3;color:#E4E9F8}
+
+/* body */
+.main{padding:7mm 14mm 9mm;display:grid;grid-template-rows:96mm 238mm 1fr;gap:6mm;min-height:0}
+.rowA{display:grid;grid-template-columns:152mm 268mm 1fr;gap:6mm;min-height:0}
+.rowB{display:grid;grid-template-columns:186mm 252mm 180mm 1fr;gap:6mm;min-height:0}
+.panel{background:#fff;border-radius:2.5mm;border-top:2.2mm solid var(--blue);padding:4.5mm 6mm 5mm;display:flex;flex-direction:column;min-height:0;overflow:hidden;box-shadow:0 .4mm 1.2mm rgba(0,21,96,.12)}
+.ph{display:flex;align-items:center;gap:3mm;margin-bottom:2.5mm}
+.num{font-family:"SeqBlack";font-size:17pt;color:#fff;background:var(--red);border-radius:50%;width:11mm;height:11mm;display:flex;align-items:center;justify-content:center;flex:none}
+h2{font-weight:600;font-size:25pt;line-height:1;margin:0;color:var(--deep)}
+.kick{font-size:13pt;color:var(--blue);margin-left:auto;text-align:right;line-height:1.15}
+h3{font-weight:600;font-size:16pt;color:var(--blue);margin:2.4mm 0 .8mm;line-height:1.1}
+p,li{font-size:13pt;line-height:1.3;margin:0}
+p+p{margin-top:1.4mm}
+ul{margin:0;padding-left:4.5mm}
+li{margin:.6mm 0}
+b{font-weight:600;color:var(--deep)}
+.red{color:var(--red)}
+svg{display:block;overflow:visible}
+svg text{font-family:"Seq",Arial,sans-serif;font-size:4.1px;fill:var(--ink)}
+svg .b{font-weight:600;fill:var(--deep)}
+svg .w{fill:#fff}
+svg .s{font-size:3.95px}
+svg .c{text-anchor:middle}
+svg .e{text-anchor:end}
+svg .r{fill:var(--red)}
+svg .bl{fill:var(--blue)}
+.lead{stroke:var(--grey);stroke-width:.35;fill:none}
+
+/* route */
+.route{display:grid;grid-template-columns:175mm 1fr;gap:8mm;align-items:start}
+.route .facts{display:grid;gap:1.6mm}
+.fact{border-left:1.6mm solid var(--blue);padding-left:2.5mm}
+.fact.r{border-color:var(--red)}
+
+/* raw materials */
+.mat{display:grid;grid-template-columns:15mm 1fr;gap:1mm 3mm;align-items:center;margin:2.5mm 0}
+.mat p{font-size:12.5pt;line-height:1.25}
+.mat b{font-size:13.5pt}
+.grp{font-weight:600;font-size:12pt;color:#fff;background:var(--blue);border-radius:1mm;padding:.8mm 2.5mm;margin:3.5mm 0 .6mm;letter-spacing:.2pt}
+.grp:first-of-type{margin-top:0}
+
+.two{display:grid;gap:6mm}
+.chips{display:flex;flex-wrap:wrap;gap:1.6mm}
+.chip{font-size:12pt;background:var(--tint);color:var(--deep);border-radius:5mm;padding:1mm 3mm}
+.chip.k{background:var(--deep);color:#fff}
+.gl{display:grid;grid-template-columns:auto 1fr;gap:1.2mm 3mm;align-items:baseline}
+.gl dt{font-weight:600;font-size:13.5pt;color:var(--red)}
+.gl dd{margin:0;font-size:12.5pt;line-height:1.25}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2mm 4mm}
+.feat p{font-size:12.5pt;line-height:1.24}
+.note{background:var(--tint);border-radius:1.5mm;padding:2mm 3mm;margin-top:2mm}
+.note.r{background:#FDE7E9}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-top:1mm}
+.type{background:var(--tint);border-radius:1.5mm;padding:2mm 2.5mm}
+.type b{display:block;font-size:12.5pt}
+.type p{font-size:11.5pt;line-height:1.22}
+.type.us{background:var(--deep);color:#fff}
+.type.us b{color:#fff}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm}
+.step{display:flex;gap:2.2mm;align-items:flex-start;background:var(--tint);border-radius:1.5mm;padding:2mm 2.5mm;position:relative}
+.step i{font-style:normal;font-family:"SeqBlack";color:#fff;background:var(--blue);border-radius:50%;width:7mm;height:7mm;flex:none;display:flex;align-items:center;justify-content:center;font-size:12pt}
+.step p{font-size:12pt;line-height:1.24}
+</style>
+</head>
+<body>
+<div id="pv">
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00239C"/></marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EE2737"/></marker>
+    <marker id="ahd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#001560"/></marker>
+    <linearGradient id="bub" x1="0" x2="1"><stop offset="0" stop-color="#B9D0EE"/><stop offset=".45" stop-color="#EAF2FC"/><stop offset="1" stop-color="#B9D0EE"/></linearGradient>
+    <linearGradient id="met" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#EEF0F4"/><stop offset=".5" stop-color="#A9B0BE"/><stop offset="1" stop-color="#E3E6EC"/></linearGradient>
+    <pattern id="cells" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="#C9D2E6"/><circle cx="1" cy="1" r=".55" fill="#5B6A92"/></pattern>
+  </defs>
+</svg>
+
+<div class="poster">
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="logo"><img src="assets/rawplast_logo.png" alt="Rawplast Industries"></div>
+  <div class="title">
+    <h1>How a flexible packaging <span>plant works</span></h1>
+    <p>From plastic pellets to printed rolls, laminates and finished bags: the machines, the materials and the route every order follows at Rawplast Industries.</p>
+  </div>
+  <div class="site"><b>Msasa <small>· head office and main plant</small></b>
+    <span>Blown film extruders EX01–EX18 · rewinder · stack printers PR01–PR04 · laminator · slitter · bag makers · core machine · two recyclers · raw material stores</span></div>
+  <div class="site"><b>Southerton <small>· 12 km away, since 2022</small></b>
+    <span>Machinery acquired from City Plastics. Central impression printer PR05 and bag makers. Film arrives from Msasa as WIP; printed rolls that need slitting return to Msasa.</span></div>
+</header>
+
+<div class="main">
+
+<!-- ============ ROUTE ============ -->
+<section class="panel">
+  <div class="route">
+    <div>
+      <div class="ph"><div class="num">1</div><h2>The route of an order</h2></div>
+      <div class="facts">
+        <div class="fact"><p><b>Make-to-order.</b> Every run starts with a customer order. The <b>Order Confirmation</b> is the contract.</p></div>
+        <div class="fact"><p>The <b>Works Order</b> is the factory instruction. It ticks the stops this job needs. It is never altered: a change gets a new works order.</p></div>
+        <div class="fact r"><p>Output is counted in <b>kg and units</b>, within <b>±10%</b> of the order. The plant runs <b>two shifts</b>.</p></div>
+      </div>
+    </div>
+    <svg width="618mm" height="82mm" viewBox="0 0 618 82">
+      <!-- legend -->
+      <circle cx="4" cy="6" r="3.2" fill="#00239C"/><text x="10" y="7.4">every job</text>
+      <circle cx="40" cy="6" r="3.2" fill="#fff" stroke="#EE2737" stroke-width="1.3"/><text x="46" y="7.4">only when ticked on the works order</text>
+      <!-- bypass -->
+      <path d="M238,30 C252,30 250,14 264,14 L568,14 C582,14 580,30 594,30" fill="none" stroke="#001560" stroke-width="1.4" stroke-dasharray="3 2"/>
+      <rect x="338" y="10" width="126" height="7" fill="#fff"/>
+      <text x="401" y="15.4" class="c b">Plain rolls can go straight to finished goods</text>
+      <!-- main line -->
+      <line x1="24" y1="30" x2="594" y2="30" stroke="#00239C" stroke-width="3.2"/>
+      <line x1="238" y1="30" x2="522" y2="30" stroke="#EE2737" stroke-width="3.2" stroke-dasharray="6 3"/>
+      <!-- stations -->
+      <g stroke="#fff" stroke-width="1.5">
+        <circle cx="24" cy="30" r="6.5" fill="#00239C"/>
+        <circle cx="95" cy="30" r="6.5" fill="#00239C"/>
+        <circle cx="166" cy="30" r="6.5" fill="#00239C"/>
+        <circle cx="238" cy="30" r="6.5" fill="#00239C"/>
+      </g>
+      <g fill="#fff" stroke="#EE2737" stroke-width="2.2">
+        <circle cx="309" cy="30" r="6"/><circle cx="380" cy="30" r="6"/><circle cx="451" cy="30" r="6"/><circle cx="522" cy="30" r="6"/>
+      </g>
+      <circle cx="594" cy="30" r="8.5" fill="#001560" stroke="#fff" stroke-width="1.5"/>
+      <g class="c">
+        <text x="24" y="46" class="b c" style="font-size:4.6px">Stores</text><text x="24" y="52" class="c s">pellets, film,</text><text x="24" y="57.5" class="c s">inks, cores</text>
+        <text x="95" y="46" class="b c" style="font-size:4.6px">Mix</text><text x="95" y="52" class="c s">Base + LLDPE</text><text x="95" y="57.5" class="c s">+ additive</text>
+        <text x="166" y="46" class="b c" style="font-size:4.6px">Extrude</text><text x="166" y="52" class="c s">EX01–EX18</text><text x="166" y="57.5" class="c s">blown film</text>
+        <text x="238" y="46" class="b c" style="font-size:4.6px">Treat</text><text x="238" y="52" class="c s">corona</text><text x="238" y="57.5" class="c s">UT · T1 · T2</text>
+        <text x="309" y="46" class="b c" style="font-size:4.6px">Print</text><text x="309" y="52" class="c s">flexo</text><text x="309" y="57.5" class="c s">PR01–PR05</text>
+        <text x="380" y="46" class="b c" style="font-size:4.6px">Laminate</text><text x="380" y="52" class="c s">BOPP + MBOPP</text><text x="380" y="57.5" class="c s">adhesive bond</text>
+        <text x="451" y="46" class="b c" style="font-size:4.6px">Slit</text><text x="451" y="52" class="c s">cut to width</text><text x="451" y="57.5" class="c s">for autopack</text>
+        <text x="522" y="46" class="b c" style="font-size:4.6px">Make bags</text><text x="522" y="52" class="c s">seal, cut,</text><text x="522" y="57.5" class="c s">count, pack</text>
+        <text x="594" y="46" class="b c" style="font-size:4.6px">Finished goods</text><text x="594" y="52" class="c s">QA check, label,</text><text x="594" y="57.5" class="c s">despatch</text>
+      </g>
+      <!-- recycling loop -->
+      <path d="M522,61 L522,68 L95,68 L95,62" fill="none" stroke="#EE2737" stroke-width="1.4" stroke-dasharray="3 1.6" marker-end="url(#ahr)"/>
+      <text x="309" y="76.5" class="c"><tspan class="b" style="fill:#EE2737">Recycling loop:</tspan> scrap film from every stage goes to the recyclers and comes back to stores as pellets</text>
+      <text x="540" y="71" class="b">Core machine</text>
+      <text x="540" y="76.5" class="s">paper cores for winders</text>
+      <text x="540" y="81.5" class="s">and for sale</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ ROW A ============ -->
+<div class="rowA">
+
+<!-- raw materials -->
+<section class="panel">
+  <div class="ph"><div class="num">2</div><h2>Raw materials</h2></div>
+  <div class="grp">POLYETHYLENE PELLETS · melted in the extruders</div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><g stroke="#8A93AD" stroke-width=".35" fill="#F7F9FD"><circle cx="3" cy="7.5" r="2.4"/><circle cx="7.5" cy="8" r="2.4"/><circle cx="12" cy="7.4" r="2.4"/><circle cx="5.2" cy="3.3" r="2.4"/><circle cx="9.8" cy="3.2" r="2.4"/></g></svg>
+    <p><b>LDPE</b> · low density. Soft, clear and stretchy. Shrink film, liners, sheeting and soft bags.</p>
+  </div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><g stroke="#5B7BC9" stroke-width=".35" fill="#DCE7FA"><circle cx="3" cy="7.5" r="2.4"/><circle cx="7.5" cy="8" r="2.4"/><circle cx="12" cy="7.4" r="2.4"/><circle cx="5.2" cy="3.3" r="2.4"/><circle cx="9.8" cy="3.2" r="2.4"/></g></svg>
+    <p><b>LLDPE</b> · linear low density. Tough and puncture resistant. Blended in for strength and cling; key to pallet wrap.</p>
+  </div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><g stroke="#A8A08A" stroke-width=".35" fill="#F3EFE2"><circle cx="3" cy="7.5" r="2.4"/><circle cx="7.5" cy="8" r="2.4"/><circle cx="12" cy="7.4" r="2.4"/><circle cx="5.2" cy="3.3" r="2.4"/><circle cx="9.8" cy="3.2" r="2.4"/></g></svg>
+    <p><b>HDPE</b> · high density. Stiff, crisp and strong at thin gauges. Carrier bags and crinkly film.</p>
+  </div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><g stroke="#000" stroke-width=".35" fill="#2B2B30"><circle cx="3" cy="7.5" r="2.4"/><circle cx="7.5" cy="8" r="2.4"/><circle cx="12" cy="7.4" r="2.4"/><circle cx="5.2" cy="3.3" r="2.4"/><circle cx="9.8" cy="3.2" r="2.4"/></g></svg>
+    <p><b>Recycled pellets</b> · made in-house from factory scrap. Used for black sheeting and in blends.</p>
+  </div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><g stroke-width=".35" stroke="#555"><circle cx="3" cy="7.5" r="2.4" fill="#EE2737"/><circle cx="7.5" cy="8" r="2.4" fill="#2E8B57"/><circle cx="12" cy="7.4" r="2.4" fill="#F5C400"/><circle cx="5.2" cy="3.3" r="2.4" fill="#fff"/><circle cx="9.8" cy="3.2" r="2.4" fill="#00239C"/></g></svg>
+    <p><b>Additives</b> · small doses in the mix: colour masterbatch, slip (film slides), antiblock (layers part easily), UV (outdoor life), antistatic.</p>
+  </div>
+  <div class="grp">FILMS · arrive ready-made on rolls</div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><rect x="2" y="2" width="10" height="7" fill="#E8F1FC" stroke="#5B7BC9" stroke-width=".4"/><ellipse cx="12" cy="5.5" rx="1.6" ry="3.5" fill="#fff" stroke="#5B7BC9" stroke-width=".4"/><ellipse cx="2" cy="5.5" rx="1.6" ry="3.5" fill="#CFE0F5" stroke="#5B7BC9" stroke-width=".4"/></svg>
+    <p><b>BOPP</b> · biaxially oriented polypropylene. Clear, glossy, stiff and easy to print. Bought in the supplier's standard widths, so slitting to size leaves offcuts.</p>
+  </div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><rect x="2" y="2" width="10" height="7" fill="url(#met)" stroke="#6B7280" stroke-width=".4"/><ellipse cx="12" cy="5.5" rx="1.6" ry="3.5" fill="#E3E6EC" stroke="#6B7280" stroke-width=".4"/><ellipse cx="2" cy="5.5" rx="1.6" ry="3.5" fill="#A9B0BE" stroke="#6B7280" stroke-width=".4"/></svg>
+    <p><b>MBOPP</b> · BOPP with a thin metal coating. Blocks light, moisture and air for snacks and dry foods.</p>
+  </div>
+  <div class="grp">CONSUMABLES</div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><rect x="2" y="2.5" width="6" height="7.5" rx=".6" fill="#EE2737"/><rect x="2" y="1.5" width="6" height="1.5" fill="#001560"/><rect x="9" y="3.5" width="4.5" height="6.5" rx=".6" fill="#00239C"/><rect x="9" y="2.5" width="4.5" height="1.3" fill="#001560"/></svg>
+    <p><b>Inks, solvents, adhesive</b> · solvent inks for flexo, solvent for thinning and wash-up, adhesive to bond laminates. Kept in a controlled ink store.</p>
+  </div>
+  <div class="mat">
+    <svg width="15mm" height="11mm" viewBox="0 0 15 11"><rect x="3" y="2.5" width="9" height="6" fill="#C89B62"/><ellipse cx="12" cy="5.5" rx="1.5" ry="3" fill="#E2BF8C" stroke="#8C6538" stroke-width=".3"/><ellipse cx="12" cy="5.5" rx=".7" ry="1.6" fill="#fff"/><path d="M4,2.5 L7,8.5 M7,2.5 L10,8.5" stroke="#8C6538" stroke-width=".35"/></svg>
+    <p><b>Paper cores</b> · tubes every roll is wound on. Made on site by the core machine.</p>
+  </div>
+  <p class="note" style="font-size:11.5pt"><b>Formulation:</b> the works order sets the recipe as Base / LLDPE / Additive. Stores issue it against a material requisition.</p>
+</section>
+
+<!-- extrusion -->
+<section class="panel">
+  <div class="ph"><div class="num">3</div><h2>Blown film extrusion</h2><div class="kick">EX01–EX18<br>Msasa</div></div>
+  <div style="display:grid;grid-template-columns:118mm 1fr;gap:6mm;min-height:0;flex:1">
+    <svg width="118mm" height="186mm" viewBox="0 0 118 186">
+      <!-- film path to winder -->
+      <path d="M64,10 L64,4 Q64,2 66,2 L106,2 Q108,2 108,4 L108,140" fill="none" stroke="#7FA6DC" stroke-width="1.6"/>
+      <!-- collapsing frame boards -->
+      <path d="M45,60 L60,20 M83,60 L68,20" stroke="#9AA3BA" stroke-width="1.6"/>
+      <!-- bubble -->
+      <path d="M58,150 C58,128 48,118 48,104 L48,58 L62,20 L66,20 L80,58 L80,104 C80,118 70,128 70,150 Z" fill="url(#bub)" stroke="#5B7BC9" stroke-width=".5"/>
+      <path d="M53,90 L53,62 M59,140 C57,128 52,118 52,106" stroke="#fff" stroke-width="1.2" fill="none" opacity=".8"/>
+      <path d="M64,146 L64,112" stroke="#00239C" stroke-width=".7" marker-end="url(#ah)"/>
+      <text x="66" y="128" class="s bl">air</text>
+      <line x1="44" y1="104" x2="84" y2="104" stroke="#EE2737" stroke-width=".7" stroke-dasharray="1.6 1"/>
+      <!-- nip rollers -->
+      <circle cx="59.5" cy="15" r="4.5" fill="#001560"/><circle cx="68.5" cy="15" r="4.5" fill="#001560"/>
+      <!-- air ring + die -->
+      <ellipse cx="64" cy="148" rx="14" ry="3" fill="#00239C"/>
+      <rect x="52" y="150" width="24" height="16" fill="#001560"/>
+      <rect x="57" y="150" width="14" height="2" fill="#5B7BC9"/>
+      <!-- barrel -->
+      <rect x="6" y="166" width="70" height="12" rx="1" fill="#C3CADB" stroke="#001560" stroke-width=".5"/>
+      <polyline points="9,172 12,168 15,176 18,168 21,176 24,168 27,176 30,168 33,176 36,168 39,176 42,168 45,176 48,168 51,176 54,168 57,176 60,168 63,176 66,168 69,172" fill="none" stroke="#001560" stroke-width=".7"/>
+      <g fill="#EE2737" opacity=".9"><rect x="28" y="164.5" width="5" height="15" rx=".6"/><rect x="37" y="164.5" width="5" height="15" rx=".6"/><rect x="46" y="164.5" width="5" height="15" rx=".6"/><rect x="55" y="164.5" width="5" height="15" rx=".6"/></g>
+      <!-- hopper -->
+      <polygon points="10,146 32,146 24,160 18,160" fill="#E1E6F2" stroke="#001560" stroke-width=".5"/>
+      <rect x="18" y="160" width="6" height="6" fill="#E1E6F2" stroke="#001560" stroke-width=".5"/>
+      <g fill="#fff" stroke="#8A93AD" stroke-width=".25"><circle cx="15" cy="149" r="1.2"/><circle cx="19" cy="150" r="1.2"/><circle cx="23" cy="149" r="1.2"/><circle cx="27" cy="149.5" r="1.2"/><circle cx="18" cy="153" r="1.2"/><circle cx="22" cy="153.5" r="1.2"/><circle cx="21" cy="157" r="1.2"/></g>
+      <!-- treater -->
+      <circle cx="108" cy="82" r="3.6" fill="#C3CADB" stroke="#001560" stroke-width=".4"/>
+      <rect x="99.5" y="76" width="3" height="12" fill="#EE2737"/>
+      <path d="M103,78 L105,79.5 L103,81 L105,82.5 L103,84 L105,85.5" stroke="#EE2737" stroke-width=".5" fill="none"/>
+      <!-- winder -->
+      <circle cx="106" cy="150" r="10.5" fill="#CFE0F5" stroke="#5B7BC9" stroke-width=".5"/>
+      <circle cx="106" cy="150" r="7" fill="none" stroke="#9DB9E3" stroke-width=".4"/>
+      <circle cx="106" cy="150" r="3" fill="#C89B62"/>
+      <!-- labels -->
+      <text x="1" y="11" class="b">Nip rollers</text>
+      <text x="1" y="16">flatten the tube;</text>
+      <text x="1" y="21">their speed sets gauge</text>
+      <path class="lead" d="M45,17 L54.5,15"/>
+      <text x="1" y="38" class="b">Collapsing frame</text>
+      <text x="1" y="43">folds the bubble flat</text>
+      <path class="lead" d="M38,40 L51,40"/>
+      <text x="1" y="68" class="b">Bubble</text>
+      <text x="1" y="73">air inside stretches</text>
+      <text x="1" y="78">the film; more air,</text>
+      <text x="1" y="83">wider layflat</text>
+      <path class="lead" d="M38,74 L47.5,74"/>
+      <text x="1" y="99" class="b r">Frost line</text>
+      <text x="1" y="104">molten film turns solid</text>
+      <path class="lead" d="M44,104 L44,104"/>
+      <text x="1" y="125" class="b">Air ring</text>
+      <text x="1" y="130">blows cooling air</text>
+      <text x="1" y="135">around the bubble</text>
+      <path class="lead" d="M33,131 L51,146"/>
+      <text x="10" y="143" class="b">Hopper</text>
+      <text x="78" y="157" class="b">Ring die</text>
+      <text x="78" y="162" class="s">melt leaves</text>
+      <text x="78" y="166.5" class="s">as a tube</text>
+      <text x="1" y="184" class="b">Heated barrel <tspan style="font-weight:400;fill:#1A2140">with turning screw</tspan></text>
+      <text x="84" y="76" class="b">Corona</text>
+      <text x="84" y="81" class="b">treater</text>
+      <text x="84" y="86" class="s">UT/T1/T2</text>
+      <text x="100" y="171" class="b">Winder</text>
+      <text x="100" y="176" class="s">roll to</text>
+      <text x="100" y="180.5" class="s">target</text>
+      <text x="100" y="185" class="s">weight</text>
+    </svg>
+    <div>
+      <h3 style="margin-top:0">How it works</h3>
+      <p>Pellets drop from the hopper into a heated barrel. A turning screw melts the plastic and pushes it up through a ring-shaped die as a thin tube. Air blown into the tube inflates it into a tall bubble while the air ring cools it from outside. At the top, nip rollers flatten the bubble into <b>layflat tubing</b> and the film is wound onto a roll. Cutting the edges gives <b>sheeting</b>.</p>
+      <h3>What the operator sets</h3>
+      <p>Temperatures in the <b>barrel, adaptor and die</b>, screw <b>RPM</b>, <b>die size</b> and <b>niproller speed</b>. A faster nip pulls the film thinner, which lowers the gauge.</p>
+      <h3>Corona treatment</h3>
+      <p>Polyethylene repels ink. An electric discharge raises the film surface energy so ink and adhesive grip. <b>UT</b> untreated · <b>T1</b> one side · <b>T2</b> both sides.</p>
+      <h3>At Rawplast</h3>
+      <p>Each extruder has one operator. The operator mixes the formulation in a half drum and loads the hopper by bucket. Rolls are wound to a target weight and labelled with weight and customer; the label follows the roll through every stage. Several extruders can share one works order. A <b>rewinder</b> turns big pallet wrap rolls into smaller ones.</p>
+      <h3>Types of extruder</h3>
+      <div class="types" style="grid-template-columns:1fr">
+        <div class="type us"><b>Blown film · the EX fleet</b><p>Tube inflated into a bubble. Strong in both directions. Monolayer at Rawplast.</p></div>
+        <div class="type"><b>Cast film</b><p>Flat die onto a chilled roller. Very clear film with an even gauge; common for stretch wrap.</p></div>
+        <div class="type"><b>Co-extrusion</b><p>Two to seven extruders feed one die to build layered film, each layer with a job: seal, barrier or print.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- printing -->
+<section class="panel">
+  <div class="ph"><div class="num">4</div><h2>Flexographic printing</h2><div class="kick">PR01–PR04 Msasa<br>PR05 Southerton</div></div>
+  <div style="display:grid;grid-template-columns:168mm 1fr;gap:7mm;min-height:0">
+    <div>
+      <svg width="168mm" height="92mm" viewBox="0 0 168 92">
+        <text x="0" y="5" class="b">One print station = one colour</text>
+        <!-- film -->
+        <line x1="2" y1="34.5" x2="164" y2="34.5" stroke="#7FA6DC" stroke-width="1.4" marker-end="url(#ah)"/>
+        <text x="3" y="31.5" class="s bl">treated film</text>
+        <!-- impression -->
+        <circle cx="62" cy="19" r="14.5" fill="#DDE2EE" stroke="#001560" stroke-width=".5"/>
+        <circle cx="62" cy="19" r="2" fill="#001560"/>
+        <!-- plate -->
+        <circle cx="62" cy="50" r="14" fill="#B8CBEA" stroke="#001560" stroke-width=".5"/>
+        <circle cx="62" cy="50" r="14.9" fill="none" stroke="#EE2737" stroke-width="1.8" stroke-dasharray="7 4"/>
+        <circle cx="62" cy="50" r="2" fill="#001560"/>
+        <!-- printed marks on film -->
+        <g fill="#EE2737"><rect x="84" y="33.2" width="7" height="1.6"/><rect x="95" y="33.2" width="7" height="1.6"/><rect x="106" y="33.2" width="7" height="1.6"/></g>
+        <!-- anilox -->
+        <circle cx="43" cy="66" r="10" fill="url(#cells)" stroke="#001560" stroke-width=".5"/>
+        <!-- doctor blade -->
+        <line x1="24" y1="57" x2="34.5" y2="61.5" stroke="#001560" stroke-width="1.3"/>
+        <!-- fountain + pan -->
+        <path d="M18,80 L18,90 L44,90 L44,80" fill="none" stroke="#001560" stroke-width=".7"/>
+        <rect x="18.4" y="84" width="25.2" height="5.6" fill="#EE2737" opacity=".75"/>
+        <circle cx="30" cy="79" r="6" fill="#DDE2EE" stroke="#001560" stroke-width=".5"/>
+        <!-- labels -->
+        <path class="lead" d="M76.5,15 L84,13"/>
+        <text x="85" y="13" class="b">Impression cylinder</text><text x="85" y="18">backs the film so the plate</text><text x="85" y="23">can press the image on</text>
+        <path class="lead" d="M77,47 L84,47"/>
+        <text x="85" y="45" class="b r">Plate cylinder</text><text x="85" y="50">a raised rubber or polymer plate</text><text x="85" y="55">carries the image</text>
+        <path class="lead" d="M53,68 L84,68"/>
+        <text x="85" y="66" class="b">Anilox roller</text><text x="85" y="71">millions of engraved cells meter</text><text x="85" y="76">an exact, even film of ink</text>
+        <path class="lead" d="M45,86 L84,86"/>
+        <text x="85" y="85" class="b">Ink pan and fountain roller</text><text x="85" y="90">lift ink onto the anilox</text>
+        <text x="0" y="52" class="b s">Doctor</text><text x="0" y="56.5" class="b s">blade</text>
+      </svg>
+      <h3>How it works</h3>
+      <p>Each station prints one colour, and a job uses one station per colour. Ink flows from the pan to the anilox roller, a doctor blade wipes off the excess, and the anilox inks only the raised parts of the plate. The plate presses that ink onto the film as it passes the impression cylinder. Dryers set the ink before the next colour.</p>
+      <h3>At Rawplast</h3>
+      <p>A printer runs with up to three operators. They mount plates, set each station and mix inks to match the QA-approved swatch kept at the machine. A test run is checked, and the order runs once QA approves. The printing report records the colours, the anilox on each station and the ink codes for every run.</p>
+      <h3>Repeat and register</h3>
+      <p>The size of the plate cylinder sets the <b>repeat</b>, the length of one round of the design. Small marks printed beside the design let the crew line each colour up with the last, which is called keeping <b>register</b>.</p>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <svg width="184mm" height="98mm" viewBox="0 0 184 98">
+        <text x="0" y="5" class="b">Two ways to arrange the stations</text>
+        <!-- STACK -->
+        <rect x="41" y="16" width="6" height="72" fill="#DDE2EE"/>
+        <path d="M34,90 L34,12 Q34,9 37,9 L51,9 Q54,9 54,12 L54,90" fill="none" stroke="#7FA6DC" stroke-width="1.2" marker-end="url(#ah)"/>
+        <g stroke="#001560" stroke-width=".4">
+          <circle cx="39.5" cy="26" r="5" fill="#fff"/><circle cx="39.5" cy="48" r="5" fill="#fff"/><circle cx="39.5" cy="70" r="5" fill="#fff"/>
+          <circle cx="48.5" cy="26" r="5" fill="#fff"/><circle cx="48.5" cy="48" r="5" fill="#fff"/><circle cx="48.5" cy="70" r="5" fill="#fff"/>
+          <circle cx="28.5" cy="26" r="5" fill="#00A3E0"/><circle cx="28.5" cy="48" r="5" fill="#E6007E"/><circle cx="28.5" cy="70" r="5" fill="#F5C400"/>
+          <circle cx="59.5" cy="26" r="5" fill="#1A1A1A"/><circle cx="59.5" cy="48" r="5" fill="#EE2737"/><circle cx="59.5" cy="70" r="5" fill="#00239C"/>
+          <circle cx="19.6" cy="26" r="3.6" fill="url(#cells)"/><circle cx="19.6" cy="48" r="3.6" fill="url(#cells)"/><circle cx="19.6" cy="70" r="3.6" fill="url(#cells)"/>
+          <circle cx="68.4" cy="26" r="3.6" fill="url(#cells)"/><circle cx="68.4" cy="48" r="3.6" fill="url(#cells)"/><circle cx="68.4" cy="70" r="3.6" fill="url(#cells)"/>
+        </g>
+        <text x="44" y="96" class="b c">Stack · PR01–PR04</text>
+        <!-- CI -->
+        <circle cx="140" cy="50" r="24" fill="#DDE2EE" stroke="#001560" stroke-width=".5"/>
+        <text x="140" y="49" class="c b s">one large</text><text x="140" y="54" class="c b s">drum</text>
+        <path d="M118,88 L125.89,70.15 A24.6,24.6 0 1,1 154.11,70.15 L162,88" fill="none" stroke="#7FA6DC" stroke-width="1.2" marker-end="url(#ah)"/>
+        <g stroke="#001560" stroke-width=".4">
+          <circle cx="114.45" cy="64.75" r="5" fill="#00A3E0"/><circle cx="111.5" cy="42.36" r="5" fill="#E6007E"/><circle cx="125.25" cy="24.45" r="5" fill="#F5C400"/>
+          <circle cx="154.75" cy="24.45" r="5" fill="#1A1A1A"/><circle cx="168.5" cy="42.36" r="5" fill="#EE2737"/><circle cx="165.55" cy="64.75" r="5" fill="#00239C"/>
+          <circle cx="106.66" cy="69.25" r="3.6" fill="url(#cells)"/><circle cx="102.81" cy="40.03" r="3.6" fill="url(#cells)"/><circle cx="120.75" cy="16.66" r="3.6" fill="url(#cells)"/>
+          <circle cx="159.25" cy="16.66" r="3.6" fill="url(#cells)"/><circle cx="177.19" cy="40.03" r="3.6" fill="url(#cells)"/><circle cx="173.34" cy="69.25" r="3.6" fill="url(#cells)"/>
+        </g>
+        <text x="140" y="96" class="b c">Central impression · PR05</text>
+      </svg>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5mm">
+        <div><h3>Stack printer</h3><p>Stations stand in towers on both sides of a frame and the film travels between them. Each station is easy to reach, so changeovers are quick and short runs pay. Keeping colours in register takes care, because the film can stretch between towers.</p></div>
+        <div><h3>Central impression</h3><p>Every station prints against one big drum, and the film rides on that drum through all colours. Register stays tight at high speed. PR05 is German-built with print quality compared to gravure. It pays from about <b>1 tonne</b> per run; each wash-up uses <b>50–100 litres</b> of solvent.</p></div>
+      </div>
+      <div class="note" style="margin-top:auto"><p><b>Gravure</b> is the other major print process in the industry. The image is engraved as tiny cells into a metal cylinder that is flooded with ink and wiped. It gives superb quality and suits very long runs, since each cylinder is costly to make. Rawplast's fleet is all flexo.</p></div>
+    </div>
+  </div>
+  <h3 style="margin-top:auto;padding-top:1mm">From artwork to printed roll</h3>
+  <div class="steps">
+    <div class="step"><i>1</i><p><b>Artwork</b> · the graphic designer works from the customer's file or idea</p></div>
+    <div class="step"><i>2</i><p><b>Sign-off</b> · customer, sales and production sign the final design</p></div>
+    <div class="step"><i>3</i><p><b>Plates</b> · made in the plate room, one plate per colour</p></div>
+    <div class="step"><i>4</i><p><b>Ink match</b> · each colour mixed to the approved swatch</p></div>
+    <div class="step"><i>5</i><p><b>Test run</b> · QA approves, then the order runs</p></div>
+  </div>
+</section>
+</div>
+
+<!-- ============ ROW B ============ -->
+<div class="rowB">
+
+<!-- lamination & slitting -->
+<section class="panel">
+  <div class="ph"><div class="num">5</div><h2>Laminating and slitting</h2></div>
+  <svg width="174mm" height="56mm" viewBox="0 0 174 56">
+    <circle cx="13" cy="12" r="9" fill="#E8F1FC" stroke="#5B7BC9" stroke-width=".5"/><circle cx="13" cy="12" r="2.5" fill="#C89B62"/>
+    <circle cx="13" cy="44" r="9" fill="url(#met)" stroke="#6B7280" stroke-width=".5"/><circle cx="13" cy="44" r="2.5" fill="#C89B62"/>
+    <path d="M13,3 L48,3 Q55,3 55,10 L55,14 Q56,18 60,20 L90,30.6" fill="none" stroke="#7FA6DC" stroke-width="1.3"/>
+    <path d="M13,53 L60,53 L90,33" fill="none" stroke="#8A93AD" stroke-width="1.3"/>
+    <circle cx="50" cy="15" r="5" fill="#DDE2EE" stroke="#001560" stroke-width=".4"/>
+    <rect x="43" y="21" width="14" height="5" fill="#EE2737" opacity=".8"/>
+    <circle cx="94" cy="26.5" r="4.8" fill="#001560"/><circle cx="94" cy="37" r="4.8" fill="#001560"/>
+    <line x1="99" y1="31.8" x2="137" y2="31.8" stroke="#001560" stroke-width="2.2"/>
+    <circle cx="150" cy="31.8" r="12" fill="#B8C7E4" stroke="#001560" stroke-width=".5"/><circle cx="150" cy="31.8" r="3" fill="#C89B62"/>
+    <text x="26" y="10" class="b">Printed BOPP</text>
+    <text x="26" y="50" class="b">MBOPP</text>
+    <text x="60" y="27" class="s r">adhesive</text>
+    <text x="101" y="20" class="b">Nip presses</text><text x="101" y="25" class="s">the webs together</text>
+    <text x="135" y="51" class="b">Laminate roll</text>
+  </svg>
+  <p>Lamination bonds two films with adhesive so the pack gets both sets of properties: <b>BOPP</b> for print and gloss, <b>MBOPP</b> as a barrier to light, moisture and air. The print usually sits on the inside face of the top film, sealed safely between the layers. Printing operators run the laminator, and laminated rolls usually go on to slitting for <b>autopack</b>.</p>
+  <svg width="174mm" height="44mm" viewBox="0 0 174 44" style="margin-top:3mm">
+    <circle cx="14" cy="19" r="12" fill="#B8C7E4" stroke="#001560" stroke-width=".5"/><circle cx="14" cy="19" r="3" fill="#C89B62"/>
+    <polygon points="26,8 98,8 98,30 26,30" fill="#E8F1FC" stroke="#5B7BC9" stroke-width=".4"/>
+    <g fill="#E8F1FC" stroke="#5B7BC9" stroke-width=".4">
+      <polygon points="102,9.5 140,9.5 140,15.5 102,15.5"/><polygon points="102,16.5 140,16.5 140,21.5 102,21.5"/><polygon points="102,22.5 140,22.5 140,28.5 102,28.5"/>
+    </g>
+    <path d="M98,8 L110,3 L124,3 M98,30 L110,35 L124,35" fill="none" stroke="#EE2737" stroke-width=".7" stroke-dasharray="1.5 1"/>
+    <g fill="#EE2737"><polygon points="96,14.5 102,16 96,17.5"/><polygon points="96,20.5 102,22 96,23.5"/></g>
+    <g fill="#B8C7E4" stroke="#001560" stroke-width=".4"><rect x="141" y="9" width="10" height="7" rx="1"/><rect x="141" y="16.2" width="10" height="5.6" rx="1"/><rect x="141" y="22" width="10" height="7" rx="1"/></g>
+    <text x="2" y="41" class="b">Wide roll</text>
+    <text x="74" y="41" class="b r">Rotary blades</text>
+    <text x="126" y="2" class="s r">edge trim</text>
+    <text x="126" y="41" class="b">Narrow rolls</text>
+  </svg>
+  <p>The <b>slitter</b> unwinds a wide roll, blades cut it into narrower rolls and trim the edges, and each strip rewinds onto its own core. A job can leave the factory straight from slitting. Southerton's printed rolls come back to Msasa for slitting.</p>
+</section>
+
+<!-- bag making -->
+<section class="panel">
+  <div class="ph"><div class="num">6</div><h2>Bag making</h2><div class="kick">Msasa and Southerton</div></div>
+  <svg width="240mm" height="40mm" viewBox="0 0 240 40">
+    <circle cx="14" cy="16" r="11" fill="#CFE0F5" stroke="#5B7BC9" stroke-width=".5"/><circle cx="14" cy="16" r="3" fill="#C89B62"/>
+    <path d="M14,5 L56,5 L56,16 L170,16" fill="none" stroke="#7FA6DC" stroke-width="1.3"/>
+    <circle cx="60" cy="13.3" r="2.6" fill="#001560"/><circle cx="60" cy="18.7" r="2.6" fill="#001560"/>
+    <rect x="100" y="4" width="12" height="10" fill="#EE2737"/><rect x="100" y="18" width="12" height="3" fill="#8A93AD"/>
+    <path d="M106,1 L106,3" stroke="#EE2737" stroke-width=".6"/>
+    <polygon points="140,6 146,6 143,15" fill="#001560"/>
+    <path d="M150,16 L168,16" stroke="#7FA6DC" stroke-width="1.3" stroke-dasharray="6 1.5"/>
+    <g fill="#E8F1FC" stroke="#5B7BC9" stroke-width=".4"><rect x="180" y="18" width="40" height="3"/><rect x="181" y="14.5" width="40" height="3"/><rect x="182" y="11" width="40" height="3"/><rect x="183" y="7.5" width="40" height="3"/></g>
+    <text x="2" y="33" class="b">Roll from extrusion</text><text x="2" y="38" class="b">or printing</text>
+    <text x="60" y="33" class="b c">Feed rollers</text>
+    <text x="106" y="33" class="b c r">Hot seal bar</text><text x="106" y="38" class="c s">fuses the layers</text>
+    <text x="143" y="33" class="b c">Knife</text><text x="143" y="38" class="c s">cuts bag free</text>
+    <text x="202" y="33" class="b c">Counted and packed</text>
+  </svg>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm;margin-top:2.5mm">
+    <div style="display:grid;grid-template-columns:38mm 1fr;gap:3mm;align-items:center">
+      <svg width="38mm" height="44mm" viewBox="0 0 38 44">
+        <rect x="4" y="3" width="30" height="36" fill="#E8F1FC"/>
+        <line x1="4" y1="3" x2="34" y2="3" stroke="#8A93AD" stroke-width=".5" stroke-dasharray="1.5 1"/>
+        <line x1="4" y1="3" x2="4" y2="39" stroke="#00239C" stroke-width="1.4"/><line x1="34" y1="3" x2="34" y2="39" stroke="#00239C" stroke-width="1.4"/>
+        <rect x="4" y="36" width="30" height="3" fill="#EE2737"/>
+        <text x="19" y="12" class="c s">open</text>
+        <text x="19" y="34" class="c s r">seal</text>
+      </svg>
+      <div><h3 style="margin-top:0">Bottom seal</h3><p>Made from tubing. One seal runs across the bottom; the sides are the tube's own folds. Strong for heavy loads, liners and refuse bags.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:38mm 1fr;gap:3mm;align-items:center">
+      <svg width="38mm" height="44mm" viewBox="0 0 38 44">
+        <rect x="4" y="3" width="30" height="36" fill="#E8F1FC"/>
+        <line x1="4" y1="3" x2="34" y2="3" stroke="#8A93AD" stroke-width=".5" stroke-dasharray="1.5 1"/>
+        <line x1="4" y1="39" x2="34" y2="39" stroke="#00239C" stroke-width="1.4"/>
+        <rect x="4" y="3" width="3" height="36" fill="#EE2737"/><rect x="31" y="3" width="3" height="36" fill="#EE2737"/>
+        <text x="19" y="12" class="c s">open</text>
+        <text x="19" y="36" class="c s bl">fold</text>
+      </svg>
+      <div><h3 style="margin-top:0">Side seal</h3><p>Made from folded film. Seals run down both sides and the bottom is the fold. Ideal for printed bags, since the print runs edge to edge.</p></div>
+    </div>
+  </div>
+  <p style="margin-top:2mm">Each bag maker has one operator. A heated seal bar presses the layers until they fuse, and a knife cuts each bag free. Plain rolls make plain bags and printed rolls make branded bags. Output is counted in units and weighed in kg. Options set on the works order:</p>
+  <div class="feat" style="margin-top:1.4mm">
+    <p><b>Gusset</b> · tucked folds that let the bag expand</p>
+    <p><b>Flap / flip</b> · extra lip that folds over the mouth</p>
+    <p><b>Punch</b> · die-cut handle holes</p>
+    <p><b>Hem</b> · folded, reinforced edge</p>
+    <p><b>Handles</b> · loops or patches for carrying</p>
+    <p><b>Perforation</b> · tear line between bags</p>
+    <p><b>Emboss</b> · texture pressed into the film</p>
+    <p><b>C-fold</b> · sheet folded for dispensing</p>
+    <p><b>Sleeves</b> · open-ended tubes</p>
+  </div>
+</section>
+
+<!-- recycling & cores -->
+<section class="panel">
+  <div class="ph"><div class="num">7</div><h2>Support machines</h2></div>
+  <h3 style="margin-top:0">Two-stage recyclers</h3>
+  <svg width="168mm" height="44mm" viewBox="0 0 168 44">
+    <text x="48" y="4" class="b c r s">STAGE 1</text><text x="124" y="4" class="b c r s">STAGE 2</text>
+    <path d="M22,6.5 L84,6.5 M98,6.5 L150,6.5" stroke="#EE2737" stroke-width=".6"/>
+    <path d="M2,26 L6,16 L10,24 L13,13 L17,25 L20,18" fill="none" stroke="#5B7BC9" stroke-width=".9"/>
+    <rect x="23" y="12" width="16" height="16" fill="#DDE2EE" stroke="#001560" stroke-width=".5"/>
+    <path d="M25,24 L28,18 L31,24 L34,18 L37,24" fill="none" stroke="#001560" stroke-width=".7"/>
+    <rect x="44" y="15" width="40" height="10" fill="#C3CADB" stroke="#001560" stroke-width=".5"/>
+    <g fill="#EE2737" opacity=".9"><rect x="52" y="13.5" width="4" height="13"/><rect x="62" y="13.5" width="4" height="13"/><rect x="72" y="13.5" width="4" height="13"/></g>
+    <path d="M84,18 L132,18 M84,20 L132,20 M84,22 L132,22" stroke="#333" stroke-width=".6"/>
+    <rect x="98" y="16" width="30" height="10" fill="#7FB4E6" opacity=".55"/>
+    <circle cx="138" cy="20" r="5" fill="#DDE2EE" stroke="#001560" stroke-width=".5"/>
+    <path d="M138,15 L138,25 M133,20 L143,20" stroke="#001560" stroke-width=".6"/>
+    <g fill="#2B2B30"><circle cx="151" cy="18" r="1.3"/><circle cx="155" cy="21" r="1.3"/><circle cx="159" cy="17.5" r="1.3"/><circle cx="153" cy="24" r="1.3"/><circle cx="157" cy="25" r="1.3"/><circle cx="161" cy="22" r="1.3"/></g>
+    <text x="11" y="36" class="c b s">Scrap</text>
+    <text x="31" y="36" class="c b s">Grind</text>
+    <text x="64" y="36" class="c b s">Melt</text>
+    <text x="113" y="36" class="c b s">Cool in water</text>
+    <text x="139" y="42" class="c b s">Pelletise</text>
+    <text x="157" y="36" class="c b s">Pellets</text>
+  </svg>
+  <p>Operators feed all the factory's film scrap into the recyclers. Stage one grinds and melts it; stage two cools the strands and chops them into pellets. The pellets are booked back into raw material stores and used for black sheeting and blends.</p>
+  <p class="note r" style="font-size:11.5pt"><b>Power limits:</b> the two recyclers cannot run together, and on generator power a recycler cannot run alongside the printers.</p>
+  <h3>Core machine</h3>
+  <div style="display:grid;grid-template-columns:46mm 1fr;gap:4mm;align-items:center">
+    <svg width="46mm" height="30mm" viewBox="0 0 34 22">
+      <rect x="4" y="5" width="24" height="12" fill="#C89B62"/>
+      <path d="M6,5 L12,17 M12,5 L18,17 M18,5 L24,17 M24,5 L28,13" stroke="#8C6538" stroke-width=".5"/>
+      <ellipse cx="28" cy="11" rx="3" ry="6" fill="#E2BF8C" stroke="#8C6538" stroke-width=".4"/><ellipse cx="28" cy="11" rx="1.5" ry="3.3" fill="#fff"/>
+      <path d="M0,1 L8,5" stroke="#C89B62" stroke-width="2"/>
+    </svg>
+    <p>Winds glued paper strips into tubes and cuts them to length. Cores are sold, used for the plant's own rolls and for handheld pallet wrap. The machine sits in the bag making wing at Msasa, next to the slitter.</p>
+  </div>
+</section>
+
+<!-- products & words -->
+<section class="panel">
+  <div class="ph"><div class="num">8</div><h2>What leaves the gate</h2></div>
+  <dl class="gl prod" style="margin:0">
+    <dt>Tubing</dt><dd>layflat tube straight off the extruder</dd>
+    <dt>Sheeting</dt><dd>tube slit open to a single layer</dd>
+    <dt>Shrink film</dt><dd>tightens around packs when heated</dd>
+    <dt>Case liners</dt><dd>liners for boxes and cartons</dd>
+    <dt>Pallet wrap</dt><dd>stretch film to hold loads; also small handheld rolls</dd>
+    <dt>Printed rolls</dt><dd>branded film for packing lines</dd>
+    <dt>Autopack rolls</dt><dd>laminated BOPP + MBOPP, slit to width</dd>
+    <dt>Bags</dt><dd>every style from section 6</dd>
+    <dt>Black sheeting</dt><dd>made from recycled pellets</dd>
+    <dt>Paper cores</dt><dd>from the core machine</dd>
+  </dl>
+  <h3 style="margin-top:3.5mm">Words of the trade</h3>
+  <dl class="gl" style="margin:0">
+    <dt>Gauge</dt><dd>film thickness, in microns</dd>
+    <dt>Layflat</dt><dd>width of the flattened tube</dd>
+    <dt>Treatment</dt><dd>surface charge so ink grips: UT, T1, T2</dd>
+    <dt>Anilox</dt><dd>engraved roller that meters ink</dd>
+    <dt>Repeat</dt><dd>length of one round of the design</dd>
+    <dt>Register</dt><dd>how exactly the colours line up</dd>
+    <dt>Autopack</dt><dd>rolls for a customer's form-fill-seal machine</dd>
+    <dt>WIP</dt><dd>work in progress between stages</dd>
+  </dl>
+</section>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
